@@ -1,7 +1,8 @@
 {
-  "name": "kemy-store",
+  "name": "dkb-ventures",
   "private": true,
   "version": "1.0.0",
+  "description": "DKB VENTURES — Premium Multi-Brand E-Commerce, Wholesale & Distribution Platform",
   "type": "module",
   "scripts": {
     "dev": "vite",
