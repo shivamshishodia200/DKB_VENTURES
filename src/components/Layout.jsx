@@ -5,6 +5,7 @@ import { COMPANY_INFO, getGeneralEnquiryWhatsApp } from '../data/companyInfo'
 import { inr } from '../data/products'
 import WhatsAppButton from './WhatsAppButton'
 import { IconLocationPin, IconPhoneCall, IconWhatsApp } from './Icons'
+import dkbLogo from '../asset/DKB-logo.png'
 
 const ANNOUNCEMENTS = [
   'Wholesale & Retail Enquiries Welcome — Direct Supply from Delhi',
@@ -66,8 +67,7 @@ function Header() {
         {/* Brand Logo */}
         <Link to="/" className="header-logo-wrap" aria-label="DKB VENTURES Home">
           <img
-            src="/dkb-logo-header.png"
-            onError={(e) => { e.currentTarget.src = '/dkb-logo.jpg' }}
+            src={dkbLogo}
             alt="DKB VENTURES — Beauty, Personal Care & Wellness"
             className="header-logo-img"
           />
@@ -276,7 +276,7 @@ function Footer() {
         {/* Col 1: Identity & Profile */}
         <div>
           <img
-            src="/dkb-logo.jpg"
+            src={dkbLogo}
             alt="DKB VENTURES Logo"
             className="footer-logo-img"
           />
