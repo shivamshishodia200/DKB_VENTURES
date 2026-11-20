@@ -9,9 +9,9 @@ import dkbLogo from '../asset/DKB-logo.png'
 
 const ANNOUNCEMENTS = [
   'Wholesale & Retail Enquiries Welcome — Direct Supply from Delhi',
-  'Official Portfolio: COTX Luxury Skincare · Green Herbs Ayurveda · Divya Tea',
+  'Official Portfolio: COTX Luxury Skincare · COTX Fine Tea',
   'Complimentary Shipping on Retail Orders Above ₹1,499 Across India',
-  'Connect with DKB Ventures: 9355698422 | 9999148167',
+  'Connect with DKB Ventures: 9999148167',
 ]
 
 function AnnouncementBar() {
@@ -291,11 +291,10 @@ function Footer() {
           <h4>Brand Portfolio</h4>
           <div className="footer-links-list">
             <Link to="/brands/cotx-luxury-skincare">COTX Luxury Skincare</Link>
-            <Link to="/brands/green-herbs-ayurveda">Green Herbs Ayurveda</Link>
-            <Link to="/brands/divya-tea">Divya Tea</Link>
+            <Link to="/brands/cotx-fine-tea">COTX Fine Tea</Link>
             <Link to="/shop">All Collections</Link>
-            <Link to="/shop?category=facial-kits">Salon & Bridal Kits</Link>
-            <Link to="/shop?category=tea-wholesale">Wholesale Bulk Tea</Link>
+            <Link to="/shop?category=facial-kits">6-Step Facial Kits</Link>
+            <Link to="/shop?category=wholesale-bulk-tea">Wholesale Bulk Tea</Link>
           </div>
         </div>
 
@@ -328,9 +327,7 @@ function Footer() {
               <IconPhoneCall size={18} />
             </span>
             <div>
-              <a href={`tel:${COMPANY_INFO.primaryPhone}`}>{COMPANY_INFO.primaryPhone}</a>
-              <span> | </span>
-              <a href={`tel:${COMPANY_INFO.secondaryPhone}`}>{COMPANY_INFO.secondaryPhone}</a>
+              <a href={`tel:+91${COMPANY_INFO.primaryPhone}`}>+91 {COMPANY_INFO.primaryPhone}</a>
             </div>
           </div>
           <div className="footer-contact-item">

@@ -6,9 +6,8 @@ import { IconWhatsApp, IconSparkles } from '../components/Icons'
 import { useSEO } from '../hooks/useSEO'
 
 const BRAND_VISUALS = {
-  'cotx-luxury-skincare': '/images/brand-cotx.jpg',
-  'green-herbs-ayurveda': '/images/brand-ayurveda.jpg',
-  'divya-tea': '/images/brand-tea.jpg',
+  'cotx-luxury-skincare': '/images/cotx-skincare-showcase.webp',
+  'cotx-fine-tea': '/images/cotx-fine-tea-showcase.webp',
 }
 
 export default function BrandDetail() {
@@ -87,7 +86,7 @@ export default function BrandDetail() {
           {/* Brand Visual Imagery */}
           <div style={{ maxWidth: '540px', margin: '0 auto 28px', borderRadius: 'var(--radius-lg)', overflow: 'hidden', border: '1px solid rgba(199, 160, 82, 0.4)', boxShadow: '0 16px 36px rgba(0,0,0,0.4)' }}>
             <img
-              src={BRAND_VISUALS[brand.id] || '/images/brand-cotx.jpg'}
+              src={BRAND_VISUALS[brand.id] || '/images/brand-cotx-luxury-skincare.webp'}
               alt={brand.name}
               style={{ width: '100%', height: '240px', objectFit: 'cover', display: 'block' }}
             />

@@ -9,17 +9,15 @@ export default function ProductArt({
 }) {
   const [imgError, setImgError] = useState(false)
 
-  // Determine image source
-  const imageSrc = product?.image || (product?.shape === 'box' ? '/products/glow-ritual-set.jpg' : null)
+  // Determine image source - only use explicit product image or neutral fallback
+  const imageSrc = product?.image || null
 
   const getBrandAbbr = (brandId) => {
     switch (brandId) {
       case 'cotx':
         return 'COTX'
-      case 'green-herbs':
-        return 'GH'
-      case 'divya-tea':
-        return 'DIVYA'
+      case 'cotx-tea':
+        return 'COTX TEA'
       default:
         return 'DKB'
     }

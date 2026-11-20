@@ -19,9 +19,8 @@ import {
 } from '../components/Icons'
 
 const BRAND_VISUALS = {
-  'cotx-luxury-skincare': '/images/brand-cotx.jpg',
-  'green-herbs-ayurveda': '/images/brand-ayurveda.jpg',
-  'divya-tea': '/images/brand-tea.jpg',
+  'cotx-luxury-skincare': '/images/brand-cotx-luxury-skincare.webp',
+  'cotx-fine-tea': '/images/category-daily-premium-tea.webp',
 }
 
 const HERO_SLIDES = [
@@ -31,10 +30,10 @@ const HERO_SLIDES = [
     badge: 'Official Delhi B2B Trading & Retail Firm',
     title: 'Beauty. Wellness.',
     titleAccent: 'Trusted Partnerships.',
-    desc: 'Connecting premium skincare, authentic Ayurveda, and fine tea with retailers, salons, beauty parlours, distributors, and individual customers from Budh Vihar, Delhi.',
-    image: '/images/hero-showcase.jpg',
-    chip1: '3 Curated Brands',
-    chip1Sub: 'COTX · Green Herbs · Divya Tea',
+    desc: 'Connecting premium skincare, salon facial kits, and fine estate tea with retailers, salons, beauty parlours, distributors, and individual customers from Budh Vihar, Delhi.',
+    image: '/images/dkb-portfolio-hero.webp',
+    chip1: 'Curated Portfolio',
+    chip1Sub: 'COTX Luxury Skincare & Fine Tea',
     chip2: 'Direct Delhi Supply',
     chip2Sub: 'Budh Vihar Hub · GST Registered',
     exploreLink: '/shop',
@@ -43,112 +42,95 @@ const HERO_SLIDES = [
     b2bText: 'Wholesale & Salon Pricing',
   },
   {
-    id: 'cotx',
+    id: 'cotx-skincare',
     tabLabel: '✨ COTX Luxury Skincare',
     badge: 'Everyday Beauty & Salon Formulations',
     title: 'COTX Luxury Skincare,',
     titleAccent: 'Radiance Refined.',
-    desc: 'Sulfate-free foaming face washes, 24K gold radiance serums, royal silk moisturizers, hair growth therapies, and 6-step bridal salon facial kits.',
-    image: '/images/brand-cotx.jpg',
+    desc: 'Sulfate-free foaming face washes, active Vitamin C & Glutathione serums, SPF 50++ sun protection, and 6-step bridal salon facial kits.',
+    image: '/images/brand-cotx-luxury-skincare.webp',
     chip1: 'Salon Professional Care',
-    chip1Sub: '6-Step Bridal Facial Regimens',
-    chip2: 'Hair & Beard Therapies',
-    chip2Sub: 'Advanced Growth & Nourishing Oils',
-    exploreLink: '/shop?brand=cotx',
-    exploreText: 'Explore COTX Products →',
+    chip1Sub: '6-Step Bridal & Glass Skin Kits',
+    chip2: 'Targeted Daily Actives',
+    chip2Sub: 'Vitamin C, Kojic Acid & SPF 50++',
+    exploreLink: '/shop?category=facial-kits',
+    exploreText: 'Explore COTX Skincare →',
     b2bLink: '/wholesale?brand=cotx',
     b2bText: 'COTX Salon Wholesale Quote',
   },
   {
-    id: 'green-herbs',
-    tabLabel: '🌿 Green Herbs Ayurveda',
-    badge: 'Herbal Wellness & Pure Botanicals',
-    title: 'Green Herbs Ayurveda,',
-    titleAccent: 'Nature’s Authentic Purity.',
-    desc: 'Pure soothing aloe vera gel, saffron ubtan night cream, Bhringraj-Amla herbal hair therapy, and steam-distilled rose water inspired by traditional Ayurveda.',
-    image: '/images/brand-ayurveda.jpg',
-    chip1: '100% Herbal Purity',
-    chip1Sub: 'Pure Aloe Vera & Saffron Ubtan',
-    chip2: 'Ayurvedic Formulations',
-    chip2Sub: 'Bhringraj, Amla & Sandalwood',
-    exploreLink: '/shop?brand=green-herbs',
-    exploreText: 'Explore Ayurvedic Range →',
-    b2bLink: '/wholesale?brand=green-herbs',
-    b2bText: 'Ayurveda Bulk Supply Quote',
-  },
-  {
-    id: 'divya-tea',
-    tabLabel: '☕ Divya Tea Blends',
+    id: 'cotx-tea',
+    tabLabel: '☕ COTX Fine Tea',
     badge: 'Artisanal CTC & Wholesale Bulk Supply',
-    title: 'Divya Tea,',
+    title: 'COTX Fine Tea,',
     titleAccent: 'Rich Aroma & Bold Flavor.',
-    desc: 'Finest CTC leaf tea, royal spiced masala chai, and commercial catering bulk bags (5kg & 25kg) for daily retail enjoyment, tea stalls, and wholesale distributors.',
-    image: '/images/brand-tea.jpg',
+    desc: 'Finest Assam CTC leaf tea, royal spiced masala chai, and commercial catering bulk cartons (5 kg & 25 kg) for daily retail enjoyment and wholesale distributors.',
+    image: '/images/category-daily-premium-tea.webp',
     chip1: 'Daily Kadak Chai',
-    chip1Sub: 'CTC Leaf & Royal Spiced Masala',
-    chip2: 'Commercial Bulk Packs',
+    chip1Sub: 'Assam CTC & Masala Chai',
+    chip2: 'Commercial Master Cartons',
     chip2Sub: '5 kg & 25 kg Wholesale Supply',
-    exploreLink: '/shop?brand=divya-tea',
+    exploreLink: '/shop?category=daily-premium-tea',
     exploreText: 'Explore Tea Blends →',
-    b2bLink: '/wholesale?brand=divya-tea',
+    b2bLink: '/wholesale?brand=cotx',
     b2bText: 'Wholesale Tea Supply Quote',
   },
 ]
 
 const CONCERNS_DATA = [
   {
-    title: 'Facial Kits & Salon Care',
+    title: '6-Step Facial Kits',
     brand: 'COTX Luxury',
     brandId: 'cotx',
     path: '/shop?category=facial-kits',
-    image: '/products/glow-ritual-set.jpg',
-    sub: '6-Step Bridal & Parlour Glow',
+    image: '/images/category-facial-kits-salon-packs.webp',
+    sub: '6-Step Bridal, Glass Skin & Gold',
   },
   {
-    title: 'Hair Growth & Scalp Therapy',
+    title: 'Face Washes & Cleansers',
     brand: 'COTX Luxury',
     brandId: 'cotx',
-    path: '/shop?category=hair-care',
-    image: '/products/gold-radiance-serum.jpg',
-    sub: 'Root Activation & Density Oil',
+    path: '/shop?category=face-washes-cleansers',
+    image: '/images/category-face-care-cleansers.webp',
+    sub: 'Charcoal Detox, Korean & Sakura Wash',
   },
   {
-    title: 'Natural Aloe & Herbal Care',
-    brand: 'Green Herbs',
-    brandId: 'green-herbs',
-    path: '/shop?category=herbal-skincare',
-    image: '/products/saffron-night-cream.jpg',
-    sub: '100% Pure Soothing Aloe & Rose',
-  },
-  {
-    title: 'Radiance Creams & Day Care',
+    title: 'Face Serums & Toners',
     brand: 'COTX Luxury',
     brandId: 'cotx',
-    path: '/shop?category=creams-moisturizers',
-    image: '/products/royal-silk-cream.jpg',
-    sub: 'Hydra-Silk 24hr Moisture Barrier',
+    path: '/shop?category=face-serums-toners',
+    image: '/images/category-face-serums-toners.webp',
+    sub: 'Vitamin C, Kojic Acid & Rice Toner',
   },
   {
-    title: 'Beard Grooming & Styling',
+    title: 'Creams & Sun Protection',
     brand: 'COTX Luxury',
     brandId: 'cotx',
-    path: '/shop?category=beard-grooming',
-    image: '/products/retinol-night-elixir.jpg',
-    sub: 'Conditioning Beard Oils & Care',
+    path: '/shop?category=creams-sun-care',
+    image: '/images/category-creams-moisturisers.webp',
+    sub: 'Brightening Cream & SPF 50++',
   },
   {
-    title: 'Whole Leaf & CTC Tea Supply',
-    brand: 'Divya Tea',
-    brandId: 'divya-tea',
-    path: '/shop?category=tea-retail',
-    image: '/products/divya-tea-blend.png',
-    sub: 'Assam CTC & Commercial Sacks',
+    title: 'Body & Hand Care',
+    brand: 'COTX Luxury',
+    brandId: 'cotx',
+    path: '/shop?category=body-hand-care',
+    image: '/images/category-body-hand-care.webp',
+    sub: 'Royal Silk & Soothing Lavender',
+  },
+  {
+    title: 'Estate Tea & Bulk Cartons',
+    brand: 'COTX Tea',
+    brandId: 'cotx',
+    path: '/shop?category=daily-premium-tea',
+    image: '/images/category-daily-premium-tea.webp',
+    sub: 'Assam CTC, Masala & Wholesale Cartons',
   },
 ]
 
 const TESTIMONIALS = [
   {
-    quote: 'The COTX 6-step facial kits and hair growth oils have given exceptional client satisfaction in our bridal packages. The packaging and formulation quality feel truly high-end.',
+    quote: 'The COTX 6-step facial kits and Vitamin C serum have given exceptional client satisfaction in our bridal packages. The packaging and formulation quality feel truly high-end.',
     author: 'Simran Malik',
     role: 'Salon Director, Aura Beauty Lounge (Rohini, Delhi)',
     stars: 5,
@@ -160,9 +142,9 @@ const TESTIMONIALS = [
     stars: 5,
   },
   {
-    quote: 'Green Herbs pure aloe vera gel and saffron night cream have authentic Ayurvedic purity. The Divya Tea royal masala blend is also a hot seller in our wellness section.',
-    author: 'Dr. Anita Verma',
-    role: 'Ayurvedic Wellness Consultant (Delhi NCR)',
+    quote: 'The COTX Japanese Cherry Blossom face wash and Sun Block SPF 50++ are consistent bestsellers in our retail store. The Assam CTC tea and Masala Chai are also favorites.',
+    author: 'Anita Verma',
+    role: 'Retail Store Owner (Delhi NCR)',
     stars: 5,
   },
 ]
@@ -170,7 +152,7 @@ const TESTIMONIALS = [
 export default function Home() {
   useSEO(
     'Trusted Partner in Beauty, Personal Care & Wellness',
-    'DKB Ventures connects quality brands (COTX Luxury Skincare, Green Herbs Ayurveda, Divya Tea) with retailers, salons, beauty parlours, distributors, and individual customers.'
+    'DKB Ventures connects quality brands (COTX Luxury Skincare & COTX Fine Tea) with retailers, salons, beauty parlours, distributors, and individual customers.'
   )
 
   const [activeHeroIndex, setActiveHeroIndex] = useState(0)
@@ -190,111 +172,159 @@ export default function Home() {
 
   return (
     <>
-      {/* 1. DISTINCTIVE MULTI-BRAND INTERACTIVE LUXURY HERO */}
+      {/* 1. ULTRA-LUXURY REDESIGNED HERO SECTION */}
       <section className="hero-section">
-        <div className="hero-glow-1" />
-        <div className="hero-glow-2" />
+        {/* Ambient Atmospheric Lighting & Fine Mesh Pattern */}
+        <div className="hero-glow-ambient" />
+        <div className="hero-glow-accent" />
+        <div className="hero-ambient-pattern" />
 
-        <div className="container" style={{ position: 'relative', zIndex: 2 }}>
-          {/* Top Segmented Brand Switcher Control */}
-          <div className="hero-brand-selector-wrap">
-            {HERO_SLIDES.map((slide, idx) => (
-              <button
-                key={slide.id}
-                type="button"
-                className={`hero-brand-tab-btn ${activeHeroIndex === idx ? 'active' : ''}`}
-                onClick={() => setActiveHeroIndex(idx)}
-                aria-label={`Switch to ${slide.tabLabel}`}
-              >
-                <span>{slide.tabLabel}</span>
-              </button>
-            ))}
+        <div className="container" style={{ position: 'relative', zIndex: 3 }}>
+          {/* Luxury Runway Brand Switcher */}
+          <div className="hero-brand-nav-bar">
+            <span className="hero-nav-label">Curated Collections:</span>
+            <div className="hero-nav-tabs">
+              {HERO_SLIDES.map((slide, idx) => (
+                <button
+                  key={slide.id}
+                  type="button"
+                  className={`hero-nav-tab ${activeHeroIndex === idx ? 'active' : ''}`}
+                  onClick={() => setActiveHeroIndex(idx)}
+                  aria-label={`Switch to ${slide.tabLabel}`}
+                >
+                  <span className="hero-nav-pip">✦</span>
+                  <span className="hero-nav-text">{slide.tabLabel}</span>
+                </button>
+              ))}
+            </div>
           </div>
 
-          <div className="hero-grid" style={{ alignItems: 'center' }}>
-            {/* Left Column: Dynamic Luxury Copy & Actions */}
-            <div className="hero-copy">
-              <div className="hero-pill-badge">
-                <IconSparkles size={14} />
-                <span>{currentSlide.badge}</span>
+          {/* Main 2-Column Hero Stage */}
+          <div className="hero-main-stage">
+            {/* Left Column: Prestigious Editorial Typography & Actions */}
+            <div className="hero-editorial-col">
+              {/* Refined Live Status Eyebrow Badge */}
+              <div className="hero-status-eyebrow">
+                <span className="hero-status-pulse" />
+                <span className="hero-status-text">{currentSlide.badge}</span>
+                <span className="hero-status-dot">·</span>
+                <span className="hero-status-hub">Delhi B2B & Retail</span>
               </div>
 
-              <h1 className="hero-heading">
+              {/* Majestic Headline */}
+              <h1 className="hero-headline">
                 {currentSlide.title} <br />
-                <span className="hero-heading-gold">{currentSlide.titleAccent}</span>
+                <span className="hero-headline-shimmer">{currentSlide.titleAccent}</span>
               </h1>
 
-              <p className="hero-description">
+              {/* Narrative Subtitle */}
+              <p className="hero-narrative">
                 {currentSlide.desc}
               </p>
 
-              <div className="hero-actions">
-                <Link to={currentSlide.exploreLink} className="btn btn-gold">
+              {/* Action Buttons */}
+              <div className="hero-action-buttons">
+                <Link to={currentSlide.exploreLink} className="hero-btn-gold">
                   <span>{currentSlide.exploreText}</span>
+                  <span className="hero-btn-arrow">→</span>
                 </Link>
-                <Link to={currentSlide.b2bLink} className="btn btn-outline-gold">
+                <Link to={currentSlide.b2bLink} className="hero-btn-glass">
                   <span>{currentSlide.b2bText}</span>
                 </Link>
                 <a
                   href={wholesaleWhatsAppUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="btn btn-whatsapp-hero"
-                  aria-label="Direct WhatsApp Quote"
+                  className="hero-btn-trade-desk"
+                  aria-label="Direct WhatsApp Trade Desk"
                 >
-                  <IconWhatsApp size={18} />
-                  <span>WhatsApp Quote</span>
+                  <IconWhatsApp size={16} />
+                  <span>Trade Desk</span>
                 </a>
+              </div>
+
+              {/* Enterprise Trust Metrics Row */}
+              <div className="hero-trust-metrics">
+                <div className="hero-metric-item">
+                  <div className="hero-metric-value">3</div>
+                  <div className="hero-metric-label">Premier Brands</div>
+                </div>
+                <div className="hero-metric-divider" />
+                <div className="hero-metric-item">
+                  <div className="hero-metric-value">100%</div>
+                  <div className="hero-metric-label">Verified Authentic</div>
+                </div>
+                <div className="hero-metric-divider" />
+                <div className="hero-metric-item">
+                  <div className="hero-metric-value">Pan-India</div>
+                  <div className="hero-metric-label">Delhi Hub Dispatch</div>
+                </div>
               </div>
             </div>
 
-            {/* Right Column: Unique Arched Luxury Visual Frame with Monogram Crest */}
-            <div className="hero-visual-showcase">
-              <div className="hero-visual-arch">
-                <img
-                  src={currentSlide.image}
-                  alt={currentSlide.title}
-                  className="hero-arch-image"
-                />
-                <div className="hero-arch-overlay" />
-
-                {/* Official Monogram Crest Badge */}
-                <div className="hero-monogram-crest">
-                  <IconShieldCheck size={18} color="var(--dkb-gold-light)" />
-                  <div>
-                    <div className="hero-crest-lettering">DKB VENTURES</div>
-                    <div className="hero-crest-sub">Budh Vihar · Delhi</div>
-                  </div>
+            {/* Right Column: Masterpiece Visual Showcase */}
+            <div className="hero-showcase-col">
+              <div className="hero-masterpiece-card">
+                {/* Image Stage Frame */}
+                <div className="hero-canvas-frame">
+                  <img
+                    key={currentSlide.id}
+                    src={currentSlide.image}
+                    alt={currentSlide.title}
+                    className="hero-masterpiece-img"
+                    loading="eager"
+                    fetchPriority="high"
+                  />
+                  <div className="hero-canvas-gradient-scrim" />
                 </div>
 
-                {/* Floating Brand Badge */}
-                <div className="hero-floating-pill">
-                  <IconSparkles size={13} />
-                  <span>{currentSlide.badge}</span>
+                {/* Floating Brand Signature Chip */}
+                <div className="hero-brand-signature-chip">
+                  <span className="hero-signature-sparkle">✦</span>
+                  <span className="hero-signature-title">
+                    {currentSlide.id === 'all'
+                      ? 'DKB Multi-Brand House'
+                      : currentSlide.tabLabel.replace(/[^a-zA-Z0-9 ]/g, '').trim()}
+                  </span>
                 </div>
 
-                {/* Bottom Floating Interactive Card */}
-                <div className="hero-floating-card-bottom">
-                  <div className="hero-floating-card-item">
-                    <div className="hero-floating-icon">
-                      <IconCheckCircle size={18} />
+                {/* Streamlined Bottom Feature Deck (Docked at Base) */}
+                <div className="hero-docked-feature-deck">
+                  <div className="hero-deck-pill">
+                    <div className="hero-deck-icon">
+                      <IconCheckCircle size={16} />
                     </div>
                     <div>
-                      <div className="hero-floating-title">{currentSlide.chip1}</div>
-                      <div className="hero-floating-sub">{currentSlide.chip1Sub}</div>
+                      <div className="hero-deck-title">{currentSlide.chip1}</div>
+                      <div className="hero-deck-sub">{currentSlide.chip1Sub}</div>
                     </div>
                   </div>
-
-                  <div className="hero-floating-card-item">
-                    <div className="hero-floating-icon">
-                      <IconTruck size={18} />
+                  <div className="hero-deck-divider" />
+                  <div className="hero-deck-pill">
+                    <div className="hero-deck-icon">
+                      <IconTruck size={16} />
                     </div>
                     <div>
-                      <div className="hero-floating-title">{currentSlide.chip2}</div>
-                      <div className="hero-floating-sub">{currentSlide.chip2Sub}</div>
+                      <div className="hero-deck-title">{currentSlide.chip2}</div>
+                      <div className="hero-deck-sub">{currentSlide.chip2Sub}</div>
                     </div>
                   </div>
                 </div>
+              </div>
+
+              {/* Sleek Minimal Slide Indicators */}
+              <div className="hero-slide-nav-pips">
+                {HERO_SLIDES.map((s, idx) => (
+                  <button
+                    key={s.id}
+                    type="button"
+                    className={`hero-slide-pip ${activeHeroIndex === idx ? 'active' : ''}`}
+                    onClick={() => setActiveHeroIndex(idx)}
+                    aria-label={`Go to ${s.tabLabel}`}
+                  >
+                    <span className="hero-pip-bar" />
+                  </button>
+                ))}
               </div>
             </div>
           </div>
@@ -333,7 +363,7 @@ export default function Home() {
             <span className="perk-eyebrow">— EXPLORE BRANDS —</span>
             <div className="perk-info">
               <h4>Multi-Brand Selection</h4>
-              <p>Discover COTX Luxury Skincare, Green Herbs Ayurveda and Divya Tea in one trusted portfolio.</p>
+              <p>Discover COTX Luxury Skincare and COTX Fine Tea in one trusted portfolio.</p>
             </div>
           </Link>
 
@@ -361,68 +391,81 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 3. EXPLORE OUR 3 BRANDS (HIGH-END EDITORIAL SHOWCASE) */}
-      <section className="section brands-section">
+      {/* 3. EXPLORE OUR BRANDS (CINEMATIC 2-PANEL SHOWCASE) */}
+      <section className="section brand-showcase-section">
         <div className="container">
-          <div className="section-title-wrap">
-            <span className="eyebrow">Curated Portfolio</span>
-            <h2 className="section-title">Explore Our Brands</h2>
-            <p className="section-subtitle">
-              Three distinct brand portfolios addressing everyday beauty, traditional Ayurvedic care, and premium tea supply.
+          <div className="brand-showcase-header">
+            <div className="brand-showcase-eyebrow">
+              <span className="rule" />
+              <span className="wordmark">DKB VENTURES</span>
+              <span className="rule" />
+            </div>
+            <h2 className="brand-showcase-heading">Explore Our Brands</h2>
+            <p className="brand-showcase-subtitle">
+              Two distinct brand pillars curated for everyday beauty rituals, professional salon treatments, and authentic Indian tea traditions.
             </p>
           </div>
 
-          <div className="grid grid-3">
-            {COMPANY_INFO.brands.map((brand) => (
-              <div key={brand.id} className="brand-card">
-                {/* Brand Full-Bleed Cover Photo */}
-                <div className="brand-card-cover-wrap">
-                  <img
-                    src={BRAND_VISUALS[brand.id] || '/images/brand-cotx.jpg'}
-                    alt={brand.name}
-                    className="brand-card-cover-img"
-                    loading="lazy"
-                  />
-                  <div className="brand-card-cover-overlay" />
-                  <span className="brand-card-cover-badge">{brand.badge}</span>
-                </div>
-
-                <div className="brand-card-header">
-                  <h3 className="brand-card-title">{brand.name}</h3>
-                  <p className="brand-card-tagline">{brand.tagline}</p>
-                </div>
-
-                <div className="brand-card-body">
-                  <p style={{ fontSize: '13.5px', color: 'var(--dkb-text-secondary)', lineHeight: 1.6, marginBottom: '18px' }}>
-                    {brand.description}
-                  </p>
-                  <div className="brand-card-categories">
-                    <span className="brand-category-label">Key Categories:</span>
-                    <div className="brand-pills-list">
-                      {brand.categories.slice(0, 4).map((cat, idx) => (
-                        <span key={idx} className="brand-pill">
-                          {cat}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                  <div className="brand-card-actions">
-                    <Link to={`/brands/${brand.id}`} className="btn btn-primary btn-sm" style={{ flex: 1 }}>
-                      View Products →
-                    </Link>
-                    <a
-                      href={wholesaleWhatsAppUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="btn btn-outline btn-sm"
-                      title="Wholesale Pricing Inquiry"
-                    >
-                      Bulk Quote ↗
-                    </a>
-                  </div>
-                </div>
+          <div className="brand-showcase-frame">
+            {/* Left Panel: COTX Luxury Skincare */}
+            <div className="brand-showcase-panel brand-showcase-panel-skincare">
+              <img
+                src="/images/cotx-skincare-showcase.webp"
+                alt="COTX Luxury Skincare"
+                className="brand-showcase-bg"
+                loading="lazy"
+              />
+              <div className="brand-showcase-overlay" />
+              <div className="brand-showcase-badge">
+                <span>✦ Luxury Skincare & Care</span>
               </div>
-            ))}
+              <div className="brand-showcase-content">
+                <span className="brand-showcase-tagline">Everyday Beauty & Salon Formulations</span>
+                <h3 className="brand-showcase-panel-title">COTX Luxury Skincare</h3>
+                <p className="brand-showcase-panel-desc">
+                  Targeted facial cleansers, active brightening serums, SPF 50++ defense, and 6-step bridal salon facial kits.
+                </p>
+                <div className="brand-showcase-chips">
+                  <span className="showcase-chip">22 Formulations</span>
+                  <span className="showcase-chip">Salon Professional</span>
+                  <span className="showcase-chip">Retail Packs</span>
+                </div>
+                <Link to="/brands/cotx-luxury-skincare" className="brand-showcase-btn">
+                  <span>Explore Skincare</span>
+                  <span className="btn-arrow">→</span>
+                </Link>
+              </div>
+            </div>
+
+            {/* Right Panel: COTX Fine Tea */}
+            <div className="brand-showcase-panel brand-showcase-panel-tea">
+              <img
+                src="/images/cotx-fine-tea-showcase.webp"
+                alt="COTX Fine Tea"
+                className="brand-showcase-bg"
+                loading="lazy"
+              />
+              <div className="brand-showcase-overlay" />
+              <div className="brand-showcase-badge">
+                <span>✦ Garden Fresh & Wholesale</span>
+              </div>
+              <div className="brand-showcase-content">
+                <span className="brand-showcase-tagline">Estate Sourced Kadak & Spiced Blends</span>
+                <h3 className="brand-showcase-panel-title">COTX Fine Tea</h3>
+                <p className="brand-showcase-panel-desc">
+                  High-grown Assam CTC leaf tea, authentic royal masala chai, and commercial 5 kg & 25 kg wholesale master cartons.
+                </p>
+                <div className="brand-showcase-chips">
+                  <span className="showcase-chip">Garden Fresh</span>
+                  <span className="showcase-chip">Daily Kadak Chai</span>
+                  <span className="showcase-chip">5kg & 25kg Cartons</span>
+                </div>
+                <Link to="/brands/cotx-fine-tea" className="brand-showcase-btn">
+                  <span>Explore Tea</span>
+                  <span className="btn-arrow">→</span>
+                </Link>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -474,10 +517,10 @@ export default function Home() {
             <span className="eyebrow">✦ Diverse Range & Curated Supply ✦</span>
             <h2 className="section-title">Shop by Category</h2>
             <p className="section-subtitle">
-              Explore 11 specialized product categories across luxury skincare, authentic Ayurveda, and fine estate tea for personal use, salons, and wholesale retail supply.
+              Explore 8 specialized product categories across luxury skincare, salon facial kits, and fine estate tea for personal use, salons, and wholesale retail supply.
             </p>
 
-            {/* Interactive Multi-Brand Filter Tabs */}
+            {/* Interactive Category Filter Tabs */}
             <div className="category-filter-tabs">
               <button
                 type="button"
@@ -485,30 +528,22 @@ export default function Home() {
                 onClick={() => setActiveCategoryTab('all')}
               >
                 <span>✦ All Collections</span>
-                <span className="category-tab-count">11</span>
+                <span className="category-tab-count">8</span>
               </button>
               <button
                 type="button"
-                className={`category-tab-btn ${activeCategoryTab === 'cotx' ? 'active' : ''}`}
-                onClick={() => setActiveCategoryTab('cotx')}
+                className={`category-tab-btn ${activeCategoryTab === 'skincare' ? 'active' : ''}`}
+                onClick={() => setActiveCategoryTab('skincare')}
               >
-                <span>✨ COTX Luxury</span>
+                <span>✨ Skincare & Care</span>
                 <span className="category-tab-count">6</span>
               </button>
               <button
                 type="button"
-                className={`category-tab-btn ${activeCategoryTab === 'green-herbs' ? 'active' : ''}`}
-                onClick={() => setActiveCategoryTab('green-herbs')}
+                className={`category-tab-btn ${activeCategoryTab === 'tea' ? 'active' : ''}`}
+                onClick={() => setActiveCategoryTab('tea')}
               >
-                <span>🌿 Green Herbs Ayurveda</span>
-                <span className="category-tab-count">3</span>
-              </button>
-              <button
-                type="button"
-                className={`category-tab-btn ${activeCategoryTab === 'divya-tea' ? 'active' : ''}`}
-                onClick={() => setActiveCategoryTab('divya-tea')}
-              >
-                <span>☕ Divya Tea Blends</span>
+                <span>☕ Estate Tea & Wholesale</span>
                 <span className="category-tab-count">2</span>
               </button>
             </div>
@@ -516,7 +551,17 @@ export default function Home() {
 
           {/* Luxury Visual Grid */}
           <div className="category-showcase-grid">
-            {CATEGORIES.filter((c) => c.id !== 'all' && (activeCategoryTab === 'all' || c.brandId === activeCategoryTab)).map((cat) => (
+            {CATEGORIES.filter((c) => {
+              if (c.id === 'all') return false
+              if (activeCategoryTab === 'all') return true
+              if (activeCategoryTab === 'skincare') {
+                return ['face-washes-cleansers', 'face-serums-toners', 'creams-sun-care', 'body-hand-care', 'shampoo-conditioner', 'facial-kits'].includes(c.id)
+              }
+              if (activeCategoryTab === 'tea') {
+                return ['daily-premium-tea', 'wholesale-bulk-tea'].includes(c.id)
+              }
+              return true
+            }).map((cat) => (
               <Link
                 key={cat.id}
                 to={`/shop?category=${cat.id}`}
@@ -524,12 +569,19 @@ export default function Home() {
               >
                 {/* Visual Header with Real Packaging Photography */}
                 <div className="cat-card-media">
-                  <img
-                    src={cat.image}
-                    alt={cat.name}
-                    className="cat-card-img"
-                    loading="lazy"
-                  />
+                  {cat.image ? (
+                    <img
+                      src={cat.image}
+                      alt={cat.name}
+                      className="cat-card-img"
+                      loading="lazy"
+                    />
+                  ) : (
+                    <div className="cat-card-fallback">
+                      <span className="cat-fallback-icon">{getCategoryIcon(cat.id)}</span>
+                      <span className="cat-fallback-brand">{cat.brandName}</span>
+                    </div>
+                  )}
                   <div className="cat-card-media-overlay" />
                   <div className={`cat-brand-badge cat-brand-${cat.brandId}`}>
                     {cat.brandName}
@@ -657,9 +709,10 @@ export default function Home() {
           {/* Right Side: Professional Salon Showroom Visual */}
           <div className="wholesale-image-card">
             <img
-              src="/images/wholesale-salon.jpg"
+              src="/images/wholesale-salon-display.webp"
               alt="Professional Salon & Distributor Display Showroom"
               className="wholesale-image-display"
+              loading="lazy"
             />
             <div className="wholesale-image-overlay" />
             <div className="wholesale-image-badge">

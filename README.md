@@ -3,7 +3,7 @@
 **Your Trusted Partner in Beauty, Personal Care & Wellness Products**
 
 - **Head Office:** M-2/18, Main Market Road, Budh Vihar, Phase-1, Delhi – 110086
-- **Contact:** 9355698422 | 9999148167
+- **Contact:** 9999148167 | 9999148167
 - **GSTIN:** 07CHBPS3702D4ZM
 
 ---

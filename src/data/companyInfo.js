@@ -12,10 +12,10 @@ export const COMPANY_INFO = {
     country: 'India',
     fullAddress: 'M-2/18, Main Market Road, Budh Vihar, Phase-1, Delhi – 110086',
   },
-  phones: ['9355698422', '9999148167'],
-  primaryPhone: '9355698422',
+  phones: ['9999148167'],
+  primaryPhone: '9999148167',
   secondaryPhone: '9999148167',
-  whatsappNumber: '919355698422',
+  whatsappNumber: '919999148167',
   whatsappSecondary: '919999148167',
   email: 'care@dkbventures.in', // Official communication placeholder
   gstin: '07CHBPS3702D4ZM',
@@ -26,71 +26,48 @@ export const COMPANY_INFO = {
       id: 'cotx-luxury-skincare',
       key: 'cotx',
       name: 'COTX Luxury Skincare',
-      tagline: 'Premium skincare and personal care for everyday beauty & grooming',
+      tagline: 'Premium skincare, hair care, and salon facial kits',
       description:
-        'Premium skincare and personal care products designed for everyday beauty and grooming needs. Formulated with targeted actives to elevate daily self-care rituals for women and men.',
+        'Premium skincare and personal care products designed for everyday beauty and grooming needs. Formulated with targeted actives, rich textures, and 6-step bridal regimens for salons and retail.',
       badge: 'Luxury Skincare',
       themeColor: '#0A3B24',
       accentColor: '#C7A052',
       categories: [
-        'Face washes and facial care',
-        'Skin creams and moisturizers',
-        'Hand and body lotions',
-        'Hair care products and hair growth oil',
-        'Beard oil and personal grooming products',
-        'Facial kits and beauty care essentials',
+        'Face Washes & Cleansers',
+        'Face Serums & Toners',
+        'Creams & Sun Care',
+        'Body & Hand Care',
+        'Shampoo & Conditioner',
+        '6-Step Professional Facial Kits',
       ],
       features: [
-        'Clinically balanced formulations',
-        'Rich nourishing textures',
-        'Professional salon & bridal kits',
-        'Targeted active skincare',
+        'Clinically balanced active formulations',
+        'Targeted serums & SPF 50++ protection',
+        'Professional salon & bridal 6-step kits',
+        'Direct trading supply from Delhi hub',
       ],
     },
     {
-      id: 'green-herbs-ayurveda',
-      key: 'green-herbs',
-      name: 'Green Herbs Ayurveda',
-      tagline: 'Ayurveda-inspired wellness & pure botanical personal care',
+      id: 'cotx-fine-tea',
+      key: 'cotx-tea',
+      name: 'COTX Fine Tea',
+      tagline: 'Aromatic garden-fresh tea blends & commercial wholesale cartons',
       description:
-        'Ayurveda-inspired products for customers seeking herbal, natural and wellness-oriented personal care options. Crafted with time-tested herbs, pure extracts, and gentle botanicals.',
-      badge: 'Ayurvedic & Herbal',
-      themeColor: '#1B5E20',
-      accentColor: '#81C784',
-      categories: [
-        'Herbal skincare products',
-        'Face packs and aloe vera products',
-        'Hair care products and herbal oils',
-        'Selected Ayurvedic and personal care essentials',
-      ],
-      features: [
-        'Pure botanical & herbal extracts',
-        'Gentle on sensitive Indian skin',
-        'Traditional Ayurvedic wisdom',
-        'Cruelty-free & clean formulation',
-      ],
-    },
-    {
-      id: 'divya-tea',
-      key: 'divya-tea',
-      name: 'Divya Tea',
-      tagline: 'Aromatic tea blends for daily enjoyment & wholesale supply',
-      description:
-        'High-quality tea products for everyday consumption, retail sale, and commercial wholesale opportunities. Sourced from fine tea gardens to deliver robust flavor, rich color, and refreshing aroma.',
+        'High-quality estate tea products for everyday consumption, retail sale, and commercial wholesale opportunities. Sourced from fine Assam tea gardens to deliver robust flavor, rich color, and refreshing aroma.',
       badge: 'Fine Tea Blends',
       themeColor: '#4E342E',
       accentColor: '#D7CCC8',
       categories: [
-        'Everyday CTC Leaf Tea',
-        'Green Tea & Botanical Blends',
-        'Spiced Masala Chai',
-        'Commercial Wholesale Bulk Packs',
+        'Assam CTC High-Grown Tea',
+        'Authentic Spiced Masala Chai',
+        'Commercial 5 kg Master Cartons',
+        'Commercial 25 kg Wholesale Cartons',
       ],
       features: [
-        'Finest garden-fresh tea leaves',
+        'Finest garden-fresh Assam tea leaves',
         'Rich aroma & full-bodied liquor',
-        'Retail consumer packs & bulk catering packs',
-        'Consistent blend quality',
+        'Retail consumer pouches & commercial cartons',
+        'Direct Delhi dispatch for trade & caterers',
       ],
     },
   ],
@@ -171,10 +148,18 @@ export const getWholesaleEnquiryWhatsApp = (brand = '') => {
   )
 }
 
-export const getProductEnquiryWhatsApp = (productName, variant = '', slug = '') => {
-  const variantText = variant ? ` (${variant})` : ''
+export const getProductEnquiryWhatsApp = (productName, variant = '', quantity = '') => {
+  const variantText = variant && variant !== 'Pending' ? ` (${variant})` : ''
+  const qtyText = quantity ? ` | Quantity: ${quantity}` : ''
   return getWhatsAppUrl(
-    `Hello DKB Ventures, I am interested in ordering/enquiring about "${productName}${variantText}". Please share availability, pricing, and ordering process.`
+    `Hello DKB Ventures, I am interested in ordering/enquiring about "${productName}${variantText}"${qtyText}. Please share availability, pricing, and ordering process.`
+  )
+}
+
+export const getBulkTeaEnquiryWhatsApp = (cartonSize = '5 kg carton', quantity = 1) => {
+  const qtyText = quantity ? ` (${quantity} carton${quantity > 1 ? 's' : ''})` : ''
+  return getWhatsAppUrl(
+    `Hello DKB Ventures, I would like to request a wholesale quote for Bulk Tea - ${cartonSize}${qtyText}. Please share carton pricing, GST terms, and shipping schedule.`
   )
 }
 

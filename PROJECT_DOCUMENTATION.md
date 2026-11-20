@@ -4,7 +4,7 @@
 **Company Name:** DKB VENTURES  
 **Tagline:** Your Trusted Partner in Beauty, Personal Care & Wellness Products  
 **Head Office:** M-2/18, Main Market Road, Budh Vihar, Phase-1, Delhi – 110086  
-**Contact Numbers:** 9355698422 | 9999148167  
+**Contact Numbers:** 9999148167 | 9999148167  
 **GSTIN:** 07CHBPS3702D4ZM  
 **Business Nature:** Trading, Wholesale, Distribution and Retail Marketing  
 
@@ -174,7 +174,7 @@ DKB_VENTURES/
 
 ### 9. Contact Us (`/contact`)
 * **फाइल:** `src/pages/Contact.jsx`
-* **विवरण:** हेड ऑफिस का पूरा पता, क्लिक-टू-कॉल लिंक्स (`tel:9355698422`), डायरेक्ट WhatsApp लिंक, GSTIN, कार्य के घंटे, और जनरल इंक्वायरी फॉर्म।
+* **विवरण:** हेड ऑफिस का पूरा पता, क्लिक-टू-कॉल लिंक्स (`tel:9999148167`), डायरेक्ट WhatsApp लिंक, GSTIN, कार्य के घंटे, और जनरल इंक्वायरी फॉर्म।
 
 ### 10. Shopping Bag / Cart (`/cart`)
 * **फाइल:** `src/pages/Cart.jsx`
@@ -218,7 +218,7 @@ npm run preview
 
 ## 📞 8. Official Communication Handles
 
-- **Primary WhatsApp / Call:** `9355698422`
+- **Primary WhatsApp / Call:** `9999148167`
 - **Secondary WhatsApp / Call:** `9999148167`
 - **Registered GSTIN:** `07CHBPS3702D4ZM`
 - **Head Office Address:** M-2/18, Main Market Road, Budh Vihar, Phase-1, Delhi – 110086

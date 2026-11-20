@@ -41,6 +41,23 @@ export default function Checkout() {
     )
   }
 
+  const hasUnavailableItems = lines.some((l) => l.isUnavailable)
+  if (hasUnavailableItems) {
+    return (
+      <div className="container section" style={{ textAlign: 'center', padding: '80px 20px' }}>
+        <h1 style={{ fontFamily: 'var(--font-serif)', fontSize: '32px', color: '#b91c1c', marginBottom: '12px' }}>
+          Unavailable Items in Bag
+        </h1>
+        <p style={{ color: 'var(--dkb-muted)', marginBottom: '24px' }}>
+          One or more items in your shopping bag are no longer available in our active catalogue or require a custom quote. Please return to your cart and remove them before completing checkout.
+        </p>
+        <Link to="/cart" className="btn btn-primary">
+          Return to Cart & Review
+        </Link>
+      </div>
+    )
+  }
+
   const handleChange = (e) => {
     const { name, value } = e.target
     setFormData((prev) => ({ ...prev, [name]: value }))

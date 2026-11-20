@@ -6,7 +6,7 @@ import { useSEO } from '../hooks/useSEO'
 
 export default function Cart() {
   useSEO('Shopping Bag', 'Review and modify the beauty, wellness, and tea products in your bag.')
-  const { lines, setQty, remove, subtotal, shipping, total, isFreeShipping, amountNeededForFreeShipping } = useCart()
+  const { lines, setQty, remove, subtotal, shipping, total, isFreeShipping, amountNeededForFreeShipping, hasUnavailableItems } = useCart()
   const navigate = useNavigate()
 
   if (lines.length === 0) {
@@ -119,22 +119,34 @@ export default function Cart() {
                   {line.brandName}
                 </span>
                 <h3 style={{ fontFamily: 'var(--font-serif)', fontSize: '18px', color: 'var(--dkb-green-dark)', margin: '2px 0 4px' }}>
-                  <Link to={`/product/${line.slug}`}>{line.name}</Link>
+                  {line.isUnavailable ? (
+                    <span>{line.name}</span>
+                  ) : (
+                    <Link to={`/product/${line.slug}`}>{line.name}</Link>
+                  )}
                 </h3>
-                <div style={{ fontSize: '12px', color: 'var(--dkb-muted)', marginBottom: '8px' }}>
-                  Pack / Variant: <b>{line.size}</b> · Unit: {inr(line.price)}
-                </div>
+                {line.isUnavailable ? (
+                  <div style={{ color: '#dc2626', fontSize: '12px', fontWeight: 600, marginTop: '4px' }}>
+                    ⚠️ Unavailable / Retired Product — Please remove from bag
+                  </div>
+                ) : (
+                  <div style={{ fontSize: '12px', color: 'var(--dkb-muted)', marginBottom: '8px' }}>
+                    {line.size && line.size !== 'Pending' ? `Pack / Variant: ${line.size} · ` : ''}Unit: {inr(line.price)}
+                  </div>
+                )}
 
-                <div className="qty-counter">
-                  <button onClick={() => setQty(line.id, line.variantId, line.qty - 1)}>−</button>
-                  <span>{line.qty}</span>
-                  <button onClick={() => setQty(line.id, line.variantId, line.qty + 1)}>+</button>
-                </div>
+                {!line.isUnavailable && (
+                  <div className="qty-counter">
+                    <button onClick={() => setQty(line.id, line.variantId, line.qty - 1)}>−</button>
+                    <span>{line.qty}</span>
+                    <button onClick={() => setQty(line.id, line.variantId, line.qty + 1)}>+</button>
+                  </div>
+                )}
               </div>
 
               <div style={{ textAlign: 'right' }}>
                 <strong style={{ fontSize: '16px', color: 'var(--dkb-green-dark)', display: 'block' }}>
-                  {inr((line.price || 0) * line.qty)}
+                  {line.isUnavailable ? 'Unavailable' : inr((line.price || 0) * line.qty)}
                 </strong>
                 <button
                   onClick={() => remove(line.id, line.variantId)}
@@ -183,11 +195,33 @@ export default function Cart() {
             <strong style={{ color: 'var(--dkb-green-dark)' }}>{inr(total)}</strong>
           </div>
 
-          <button className="btn btn-primary btn-full" style={{ marginBottom: '12px' }} onClick={() => navigate('/checkout')}>
+          {hasUnavailableItems && (
+            <div style={{ background: '#fef2f2', border: '1px solid #f87171', color: '#b91c1c', padding: '10px 14px', borderRadius: 'var(--radius-sm)', fontSize: '12.5px', marginBottom: '14px', lineHeight: 1.4 }}>
+              Please remove unavailable or retired products from your bag before proceeding to checkout.
+            </div>
+          )}
+
+          <button
+            className="btn btn-primary btn-full"
+            style={{ marginBottom: '12px', opacity: hasUnavailableItems ? 0.6 : 1, cursor: hasUnavailableItems ? 'not-allowed' : 'pointer' }}
+            disabled={hasUnavailableItems}
+            onClick={() => {
+              if (hasUnavailableItems) return
+              navigate('/checkout')
+            }}
+          >
             Proceed to Checkout →
           </button>
 
-          <button className="btn btn-whatsapp btn-full btn-sm" onClick={handleWhatsAppCheckout}>
+          <button
+            className="btn btn-whatsapp btn-full btn-sm"
+            disabled={hasUnavailableItems}
+            style={{ opacity: hasUnavailableItems ? 0.6 : 1, cursor: hasUnavailableItems ? 'not-allowed' : 'pointer' }}
+            onClick={() => {
+              if (hasUnavailableItems) return
+              handleWhatsAppCheckout()
+            }}
+          >
             <span>Order via WhatsApp Direct</span>
             <span>💬</span>
           </button>

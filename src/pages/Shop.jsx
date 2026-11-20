@@ -83,32 +83,24 @@ export default function Shop() {
   const getBannerData = () => {
     if (currentBrand === 'cotx') {
       return {
-        img: '/images/brand-cotx.jpg',
+        img: '/images/cotx-skincare-showcase.webp',
         eyebrow: '✦ COTX Luxury Skincare',
-        title: 'Everyday Beauty & Salon Formulations',
-        desc: 'Sulfate-free cleansers, 24K gold serums, royal silk moisturizers, and 6-step bridal salon facial kits.',
+        title: 'Premium Skincare & Salon Regimens',
+        desc: 'Sulfate-free cleansers, targeted active serums, skin creams, and 6-step bridal salon facial kits.',
       }
     }
-    if (currentBrand === 'green-herbs') {
+    if (currentBrand === 'cotx-tea') {
       return {
-        img: '/images/brand-ayurveda.jpg',
-        eyebrow: '🌿 Green Herbs Ayurveda',
-        title: 'Pure Botanical & Herbal Wellness',
-        desc: 'Pure soothing aloe vera gels, saffron ubtan night cream, and Bhringraj-Amla herbal hair therapy.',
-      }
-    }
-    if (currentBrand === 'divya-tea') {
-      return {
-        img: '/images/brand-tea.jpg',
-        eyebrow: '☕ Divya Tea Blends',
-        title: 'Artisanal CTC & Wholesale Bulk Packs',
-        desc: 'Finest everyday CTC tea, royal spiced chai, and 5kg/25kg commercial catering bags.',
+        img: '/images/cotx-fine-tea-showcase.webp',
+        eyebrow: '☕ COTX Fine Tea',
+        title: 'Estate Tea & Commercial Bulk Cartons',
+        desc: 'Assam high-grown CTC tea, authentic spiced royal chai, and commercial catering cartons (5 kg & 25 kg).',
       }
     }
     return {
-      img: '/images/hero-showcase.jpg',
-      eyebrow: '✦ DKB Ventures Multi-Brand Store',
-      title: 'Curated Beauty, Wellness & Tea Portfolio',
+      img: '/images/dkb-portfolio-hero.webp',
+      eyebrow: '✦ DKB Ventures Portfolio',
+      title: 'Curated Beauty, Skincare & Tea Portfolio',
       desc: 'Genuine direct supply for retail customers, beauty salons, retail stores, and wholesale buyers across India.',
     }
   }
@@ -124,7 +116,7 @@ export default function Shop() {
           {getPageTitle()}
         </h1>
         <p className="section-subtitle">
-          Showing {filteredProducts.length} verified products across our 3 portfolio brands.
+          Showing {filteredProducts.length} verified products across our 8 portfolio categories.
         </p>
       </div>
 

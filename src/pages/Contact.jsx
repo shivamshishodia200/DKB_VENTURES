@@ -5,8 +5,8 @@ import { useSEO } from '../hooks/useSEO'
 
 export default function Contact() {
   useSEO(
-    'Contact Us — Head Office, Phones & WhatsApp',
-    'Get in touch with DKB Ventures head office at Budh Vihar, Delhi – 110086. Phone/WhatsApp: 9355698422 | 9999148167. GSTIN: 07CHBPS3702D4ZM.'
+    'Contact Us — Head Office, Phone & WhatsApp',
+    'Get in touch with DKB Ventures head office at Budh Vihar, Delhi – 110086. Phone/WhatsApp: 9999148167. GSTIN: 07CHBPS3702D4ZM.'
   )
   const [formData, setFormData] = useState({
     name: '',
@@ -76,12 +76,8 @@ export default function Contact() {
                 <div>
                   <b style={{ display: 'block', color: 'var(--dkb-gold-light)', fontSize: '12px', textTransform: 'uppercase' }}>Call / WhatsApp</b>
                   <div>
-                    <a href={`tel:${COMPANY_INFO.primaryPhone}`} style={{ color: '#ffffff' }}>
-                      {COMPANY_INFO.primaryPhone}
-                    </a>
-                    <span> | </span>
-                    <a href={`tel:${COMPANY_INFO.secondaryPhone}`} style={{ color: '#ffffff' }}>
-                      {COMPANY_INFO.secondaryPhone}
+                    <a href={`tel:+91${COMPANY_INFO.primaryPhone}`} style={{ color: '#ffffff' }}>
+                      +91 {COMPANY_INFO.primaryPhone}
                     </a>
                   </div>
                 </div>

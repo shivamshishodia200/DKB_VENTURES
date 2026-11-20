@@ -227,9 +227,8 @@ export default function Wholesale() {
                     className="form-select"
                   >
                     <option value="All Brands">All Brands (Complete Catalogue)</option>
-                    <option value="COTX Luxury Skincare">COTX Luxury Skincare</option>
-                    <option value="Green Herbs Ayurveda">Green Herbs Ayurveda</option>
-                    <option value="Divya Tea">Divya Tea (Retail & Bulk)</option>
+                    <option value="COTX Luxury Skincare">COTX Luxury Skincare (Face Care, Kits, Serums)</option>
+                    <option value="COTX Fine Tea">COTX Fine Tea (Retail Pouches & 5kg/25kg Bulk Cartons)</option>
                   </select>
                 </div>
               </div>
@@ -302,9 +301,10 @@ export default function Wholesale() {
           {/* Professional Salon Showroom Visual Frame */}
           <div style={{ borderRadius: 'var(--radius-md)', overflow: 'hidden', border: '1px solid rgba(199, 160, 82, 0.4)', marginBottom: '24px', boxShadow: '0 8px 24px rgba(6, 59, 35, 0.08)' }}>
             <img
-              src="/images/wholesale-salon.jpg"
+              src="/images/wholesale-salon-display.webp"
               alt="Professional Salon & Distributor Display Showroom"
               style={{ width: '100%', height: '220px', objectFit: 'cover', display: 'block' }}
+              loading="lazy"
             />
             <div style={{ padding: '16px 20px', background: 'var(--dkb-white)', borderTop: '2px solid var(--dkb-gold)' }}>
               <div style={{ fontSize: '14px', fontWeight: 700, color: 'var(--dkb-green-dark)' }}>

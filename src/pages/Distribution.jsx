@@ -6,7 +6,7 @@ import { useSEO } from '../hooks/useSEO'
 export default function Distribution() {
   useSEO(
     'Distribution & Regional Business Partnerships',
-    'Apply to become a regional stockist or distributor partner for COTX, Green Herbs Ayurveda, and Divya Tea with DKB Ventures.'
+    'Apply to become a regional stockist or distributor partner for COTX Luxury Skincare and COTX Fine Tea with DKB Ventures.'
   )
 
   const [formData, setFormData] = useState({
@@ -17,7 +17,7 @@ export default function Distribution() {
     city: '',
     state: '',
     businessCategory: 'Distributor / Stockist',
-    brandsOfInterest: 'All 3 Brands',
+    brandsOfInterest: 'All Portfolios',
     experienceYears: '',
     expectedVolume: '',
     notes: '',
@@ -48,7 +48,7 @@ export default function Distribution() {
         <span className="eyebrow">Channel Expansion</span>
         <h1 className="section-title">Distribution & Regional Business Partnerships</h1>
         <p className="section-subtitle">
-          Join hands with DKB Ventures to distribute, stock, and represent COTX Luxury Skincare, Green Herbs Ayurveda, and Divya Tea in your regional market.
+          Join hands with DKB Ventures to distribute, stock, and represent COTX Luxury Skincare and COTX Fine Tea in your regional market.
         </p>
       </div>
 
@@ -211,10 +211,9 @@ export default function Distribution() {
                     onChange={handleChange}
                     className="form-select"
                   >
-                    <option value="All 3 Brands">All 3 Brands (COTX, Green Herbs, Divya Tea)</option>
+                    <option value="All Portfolios">All Portfolios (COTX Skincare & Fine Tea)</option>
                     <option value="COTX Luxury Skincare Only">COTX Luxury Skincare Only</option>
-                    <option value="Green Herbs Ayurveda Only">Green Herbs Ayurveda Only</option>
-                    <option value="Divya Tea Only">Divya Tea (Retail & Bulk) Only</option>
+                    <option value="COTX Fine Tea Only">COTX Fine Tea (Retail & Bulk) Only</option>
                   </select>
                 </div>
               </div>

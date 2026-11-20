@@ -4,15 +4,14 @@ import { getProductsByBrand } from '../data/products'
 import { useSEO } from '../hooks/useSEO'
 
 const BRAND_VISUALS = {
-  'cotx-luxury-skincare': '/images/brand-cotx.jpg',
-  'green-herbs-ayurveda': '/images/brand-ayurveda.jpg',
-  'divya-tea': '/images/brand-tea.jpg',
+  'cotx-luxury-skincare': '/images/cotx-skincare-showcase.webp',
+  'cotx-fine-tea': '/images/cotx-fine-tea-showcase.webp',
 }
 
 export default function Brands() {
   useSEO(
-    'Our Brand Portfolio — COTX, Green Herbs Ayurveda & Divya Tea',
-    'Explore the 3 distinct brand portfolios of DKB Ventures: COTX Luxury Skincare, Green Herbs Ayurveda, and Divya Tea with wholesale and retail supply.'
+    'Our Brand Portfolio — COTX Luxury Skincare & COTX Fine Tea',
+    'Explore the brand portfolio of DKB Ventures: COTX Luxury Skincare (22 products) and COTX Fine Tea (3 products) with wholesale and retail supply.'
   )
 
   return (
@@ -21,7 +20,7 @@ export default function Brands() {
         <span className="eyebrow">Portfolio Architecture</span>
         <h1 className="section-title">Our Brand Portfolio</h1>
         <p className="section-subtitle">
-          DKB Ventures represents and distributes three distinct brand portfolios across luxury skincare, Ayurveda-inspired wellness, and daily tea products.
+          DKB Ventures represents and distributes two curated brand portfolios across luxury skincare and fine estate tea products.
         </p>
       </div>
 
@@ -43,7 +42,7 @@ export default function Brands() {
               {/* Header with High-Res Brand Hero Cover */}
               <div style={{ position: 'relative', height: '260px', overflow: 'hidden' }}>
                 <img
-                  src={BRAND_VISUALS[brand.id] || '/images/brand-cotx.jpg'}
+                  src={BRAND_VISUALS[brand.id] || '/images/brand-cotx-luxury-skincare.webp'}
                   alt={brand.name}
                   style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                 />

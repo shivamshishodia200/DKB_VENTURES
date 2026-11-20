@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 import ProductArt from './ProductArt'
 import { useCart } from '../context/CartContext'
 import { discount, inr } from '../data/products'
-import { getProductEnquiryWhatsApp } from '../data/companyInfo'
+import { getProductEnquiryWhatsApp, getBulkTeaEnquiryWhatsApp } from '../data/companyInfo'
 import { IconWhatsApp } from './Icons'
 
 export default function ProductCard({ product }) {
@@ -10,12 +10,15 @@ export default function ProductCard({ product }) {
   const p = product
 
   const hasDiscount = p.mrp > p.price && p.price > 0
-  const isEnquiryOnly = p.pricingMode === 'wholesale' || p.pricingMode === 'enquiry' || p.price <= 0
+  const isEnquiryOnly = p.pricingMode === 'wholesale' || p.pricingMode === 'enquiry' || !p.price || p.price <= 0
 
   const handleWhatsAppEnquiry = (e) => {
     e.preventDefault()
     e.stopPropagation()
-    const url = getProductEnquiryWhatsApp(p.name, p.size, p.slug)
+    const url =
+      p.pricingMode === 'wholesale'
+        ? getBulkTeaEnquiryWhatsApp('5 kg carton', 1)
+        : getProductEnquiryWhatsApp(p.name, p.size !== 'Pending' ? p.size : '')
     window.open(url, '_blank', 'noopener,noreferrer')
   }
 
@@ -28,6 +31,7 @@ export default function ProductCard({ product }) {
           {p.bestseller && <span className="product-badge badge-gold">✦ Bestseller</span>}
           {p.newArrival && <span className="product-badge badge-new">New</span>}
           {hasDiscount && <span className="product-badge badge-discount">{discount(p.mrp, p.price)}% Off</span>}
+          {p.isIllustrative && <span className="product-badge badge-illustrative">Illustrative Image</span>}
         </div>
 
         <ProductArt product={p} tone={p.tone} shape={p.shape} alt={p.name} />
@@ -36,7 +40,7 @@ export default function ProductCard({ product }) {
       <div className="product-card-body">
         <div className="product-meta-row">
           <span className="product-category-name">{p.categoryName}</span>
-          <span className="product-size-label">{p.size}</span>
+          {p.size && p.size !== 'Pending' && <span className="product-size-label">{p.size}</span>}
         </div>
 
         <h3 className="product-title">
@@ -53,7 +57,7 @@ export default function ProductCard({ product }) {
         <div className="product-price-row">
           {isEnquiryOnly ? (
             <strong className="current-price" style={{ color: 'var(--dkb-gold)' }}>
-              Wholesale / Quote Only
+              {p.pricingMode === 'wholesale' ? 'Quote on Request' : 'Enquire on WhatsApp'}
             </strong>
           ) : (
             <>
@@ -73,7 +77,7 @@ export default function ProductCard({ product }) {
               onClick={handleWhatsAppEnquiry}
               aria-label={`Enquire about ${p.name}`}
             >
-              <span>Enquire Pricing</span>
+              <span>{p.pricingMode === 'wholesale' ? 'Request Wholesale Quote' : 'Enquire on WhatsApp'}</span>
               <span>↗</span>
             </button>
           ) : (

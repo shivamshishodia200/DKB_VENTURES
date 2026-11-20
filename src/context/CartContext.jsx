@@ -92,16 +92,26 @@ export function CartProvider({ children }) {
   const totals = useMemo(() => {
     const lines = items.map((i) => {
       const fullProduct = getProductBySlug(i.slug || i.id)
-      const resolvedImage = i.image || fullProduct?.image || ''
+      const isUnavailable =
+        !fullProduct ||
+        fullProduct.pricingMode === 'wholesale' ||
+        fullProduct.pricingMode === 'enquiry' ||
+        !fullProduct.price ||
+        fullProduct.price <= 0
+      const resolvedImage = fullProduct?.image || i.image || ''
       return {
         ...i,
         image: resolvedImage,
         product: fullProduct || i,
+        isUnavailable,
       }
     })
 
+    const hasUnavailableItems = lines.some((line) => line.isUnavailable)
+    const validLines = lines.filter((line) => !line.isUnavailable)
+
     const count = lines.reduce((acc, line) => acc + line.qty, 0)
-    const subtotal = lines.reduce((acc, line) => {
+    const subtotal = validLines.reduce((acc, line) => {
       const itemPrice = line.price || 0
       return acc + itemPrice * line.qty
     }, 0)
@@ -112,6 +122,7 @@ export function CartProvider({ children }) {
 
     return {
       lines,
+      hasUnavailableItems,
       count,
       subtotal,
       shipping,
