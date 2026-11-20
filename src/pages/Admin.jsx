@@ -247,7 +247,7 @@ export default function Admin() {
           <h3 style={{ fontFamily: 'var(--font-serif)', fontSize: '32px', color: 'var(--dkb-green-dark)', margin: '4px 0' }}>
             {PRODUCTS.length}
           </h3>
-          <span style={{ fontSize: '12px', color: 'var(--dkb-muted)' }}>COTX Skincare & COTX Fine Tea</span>
+          <span style={{ fontSize: '12px', color: 'var(--dkb-muted)' }}>COTX Skincare & Divya Tea</span>
         </div>
       </div>
 

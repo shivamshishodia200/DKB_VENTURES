@@ -34,7 +34,14 @@ export default function Shop() {
 
   const filteredProducts = useMemo(() => {
     let result = PRODUCTS.filter((p) => {
-      if (currentBrand && p.brandId !== currentBrand) return false
+      if (currentBrand) {
+        const isTea = currentBrand === 'divya-tea' || currentBrand === 'cotx-tea' || currentBrand === 'cotx-fine-tea'
+        if (isTea) {
+          if (p.brandId !== 'divya-tea' && p.brandId !== 'cotx-tea') return false
+        } else if (p.brandId !== currentBrand) {
+          return false
+        }
+      }
       if (currentCategory && p.categoryId !== currentCategory) return false
       if (currentConcern && p.concern !== currentConcern) return false
       if (searchQuery) {
@@ -89,10 +96,10 @@ export default function Shop() {
         desc: 'Sulfate-free cleansers, targeted active serums, skin creams, and 6-step bridal salon facial kits.',
       }
     }
-    if (currentBrand === 'cotx-tea') {
+    if (currentBrand === 'divya-tea' || currentBrand === 'cotx-tea' || currentBrand === 'cotx-fine-tea') {
       return {
-        img: '/images/cotx-fine-tea-showcase.webp',
-        eyebrow: '☕ COTX Fine Tea',
+        img: '/images/divya-tea-showcase.webp',
+        eyebrow: '☕ Divya Tea',
         title: 'Estate Tea & Commercial Bulk Cartons',
         desc: 'Assam high-grown CTC tea, authentic spiced royal chai, and commercial catering cartons (5 kg & 25 kg).',
       }

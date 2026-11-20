@@ -9,7 +9,7 @@ import dkbLogo from '../asset/DKB-logo.png'
 
 const ANNOUNCEMENTS = [
   'Wholesale & Retail Enquiries Welcome — Direct Supply from Delhi',
-  'Official Portfolio: COTX Luxury Skincare · COTX Fine Tea',
+  'Official Portfolio: COTX Luxury Skincare · Divya Tea',
   'Complimentary Shipping on Retail Orders Above ₹1,499 Across India',
   'Connect with DKB Ventures: 9999148167',
 ]
@@ -291,7 +291,7 @@ function Footer() {
           <h4>Brand Portfolio</h4>
           <div className="footer-links-list">
             <Link to="/brands/cotx-luxury-skincare">COTX Luxury Skincare</Link>
-            <Link to="/brands/cotx-fine-tea">COTX Fine Tea</Link>
+            <Link to="/brands/divya-tea">Divya Tea</Link>
             <Link to="/shop">All Collections</Link>
             <Link to="/shop?category=facial-kits">6-Step Facial Kits</Link>
             <Link to="/shop?category=wholesale-bulk-tea">Wholesale Bulk Tea</Link>

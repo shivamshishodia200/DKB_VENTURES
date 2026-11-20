@@ -7,14 +7,15 @@ import { useSEO } from '../hooks/useSEO'
 
 const BRAND_VISUALS = {
   'cotx-luxury-skincare': '/images/cotx-skincare-showcase.webp',
-  'cotx-fine-tea': '/images/cotx-fine-tea-showcase.webp',
+  'divya-tea': '/images/divya-tea-showcase.webp',
+  'cotx-fine-tea': '/images/divya-tea-showcase.webp',
 }
 
 export default function BrandDetail() {
   const { brandSlug } = useParams()
 
   const brand = COMPANY_INFO.brands.find(
-    (b) => b.id === brandSlug || b.key === brandSlug
+    (b) => b.id === brandSlug || b.key === brandSlug || (brandSlug === 'cotx-fine-tea' && b.id === 'divya-tea')
   )
 
   useSEO(

@@ -2344,7 +2344,8 @@ ol {
   border: 1px solid rgba(199, 160, 82, 0.45);
 }
 
-.concern-brand-cotx-tea {
+.concern-brand-cotx-tea,
+.concern-brand-divya-tea {
   background: rgba(122, 68, 25, 0.08);
   color: #7a4419;
   border: 1px solid rgba(199, 160, 82, 0.45);
@@ -2583,7 +2584,8 @@ ol {
   color: var(--dkb-gold-light);
 }
 
-.cat-brand-cotx-tea {
+.cat-brand-cotx-tea,
+.cat-brand-divya-tea {
   background: rgba(78, 52, 46, 0.88);
   color: #fce8cc;
 }

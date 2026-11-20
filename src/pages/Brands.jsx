@@ -5,13 +5,14 @@ import { useSEO } from '../hooks/useSEO'
 
 const BRAND_VISUALS = {
   'cotx-luxury-skincare': '/images/cotx-skincare-showcase.webp',
-  'cotx-fine-tea': '/images/cotx-fine-tea-showcase.webp',
+  'divya-tea': '/images/divya-tea-showcase.webp',
+  'cotx-fine-tea': '/images/divya-tea-showcase.webp',
 }
 
 export default function Brands() {
   useSEO(
-    'Our Brand Portfolio — COTX Luxury Skincare & COTX Fine Tea',
-    'Explore the brand portfolio of DKB Ventures: COTX Luxury Skincare (22 products) and COTX Fine Tea (3 products) with wholesale and retail supply.'
+    'Our Brand Portfolio — COTX Luxury Skincare & Divya Tea',
+    'Explore the brand portfolio of DKB Ventures: COTX Luxury Skincare (22 products) and Divya Tea (3 products) with wholesale and retail supply.'
   )
 
   return (

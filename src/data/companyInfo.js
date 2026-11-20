@@ -48,9 +48,9 @@ export const COMPANY_INFO = {
       ],
     },
     {
-      id: 'cotx-fine-tea',
-      key: 'cotx-tea',
-      name: 'COTX Fine Tea',
+      id: 'divya-tea',
+      key: 'divya-tea',
+      name: 'Divya Tea',
       tagline: 'Aromatic garden-fresh tea blends & commercial wholesale cartons',
       description:
         'High-quality estate tea products for everyday consumption, retail sale, and commercial wholesale opportunities. Sourced from fine Assam tea gardens to deliver robust flavor, rich color, and refreshing aroma.',

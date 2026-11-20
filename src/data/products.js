@@ -1,9 +1,9 @@
 // Multi-Brand Product Catalogue for DKB VENTURES
-// Portfolio: COTX Luxury Skincare & COTX Fine Tea
+// Portfolio: COTX Luxury Skincare & Divya Tea
 
 export const BRANDS = [
   { id: 'cotx', slug: 'cotx-luxury-skincare', name: 'COTX Luxury Skincare', short: 'COTX Skincare' },
-  { id: 'cotx-tea', slug: 'cotx-fine-tea', name: 'COTX Fine Tea', short: 'COTX Tea' },
+  { id: 'divya-tea', slug: 'divya-tea', name: 'Divya Tea', short: 'Divya Tea' },
 ]
 
 export const CATEGORIES = [
@@ -77,8 +77,8 @@ export const CATEGORIES = [
   {
     id: 'daily-premium-tea',
     name: 'Daily & Premium Tea',
-    brandId: 'cotx-tea',
-    brandName: 'COTX Fine Tea',
+    brandId: 'divya-tea',
+    brandName: 'Divya Tea',
     icon: 'leaf',
     image: '/images/category-daily-premium-tea.webp',
     subtitle: 'Garden-fresh Assam CTC tea & aromatic spiced royal chai',
@@ -88,8 +88,8 @@ export const CATEGORIES = [
   {
     id: 'wholesale-bulk-tea',
     name: 'Wholesale & Bulk Tea Packs',
-    brandId: 'cotx-tea',
-    brandName: 'COTX Fine Tea',
+    brandId: 'divya-tea',
+    brandName: 'Divya Tea',
     icon: 'box',
     image: '/images/category-wholesale-bulk-tea.webp',
     subtitle: 'Commercial 5 kg & 25 kg master cartons for caterers & trade',
@@ -768,14 +768,14 @@ export const PRODUCTS = [
   {
     id: 'cotx-assam-ctc-tea',
     slug: 'cotx-assam-ctc-tea',
-    brandId: 'cotx-tea',
-    brandName: 'COTX Fine Tea',
+    brandId: 'divya-tea',
+    brandName: 'Divya Tea',
     categoryId: 'daily-premium-tea',
     categoryName: 'Daily & Premium Tea',
     name: 'Assam CTC Tea',
     short: 'Garden-fresh Assam CTC black tea delivering robust liquor, rich color, and strong taste.',
     description:
-      'Sourced from high-grown Assam tea estates, COTX Assam CTC Tea brews an invigorating, full-bodied cup perfect for daily morning and evening chai.',
+      'Sourced from high-grown Assam tea estates, Divya Tea Assam CTC brews an invigorating, full-bodied cup perfect for daily morning and evening chai.',
     concern: 'Fresh Daily Beverage',
     pricingMode: 'enquiry',
     price: null,
@@ -795,14 +795,14 @@ export const PRODUCTS = [
   {
     id: 'cotx-masala-chai',
     slug: 'cotx-masala-chai',
-    brandId: 'cotx-tea',
-    brandName: 'COTX Fine Tea',
+    brandId: 'divya-tea',
+    brandName: 'Divya Tea',
     categoryId: 'daily-premium-tea',
     categoryName: 'Daily & Premium Tea',
     name: 'Masala Chai',
     short: 'Authentic spiced tea blend of premium CTC with cardamom, ginger, cloves, and cinnamon.',
     description:
-      'COTX Masala Chai blends traditional aromatic whole spices with robust CTC tea leaves for an authentic, warming kadak chai experience.',
+      'Divya Tea Masala Chai blends traditional aromatic whole spices with robust CTC tea leaves for an authentic, warming kadak chai experience.',
     concern: 'Fresh Daily Beverage',
     pricingMode: 'enquiry',
     price: null,
@@ -826,14 +826,14 @@ export const PRODUCTS = [
   {
     id: 'cotx-bulk-tea',
     slug: 'cotx-bulk-tea',
-    brandId: 'cotx-tea',
-    brandName: 'COTX Fine Tea',
+    brandId: 'divya-tea',
+    brandName: 'Divya Tea',
     categoryId: 'wholesale-bulk-tea',
     categoryName: 'Wholesale & Bulk Tea Packs',
     name: 'Bulk Tea',
     short: 'Commercial master cartons of high-grade Assam tea for wholesale buyers, caterers, and trade.',
     description:
-      'Designed for institutions, caterers, tea blenders, and regional retailers. COTX Bulk Tea master cartons are packaged in food-grade lined cartons for optimal aroma retention and shelf life.',
+      'Designed for institutions, caterers, tea blenders, and regional retailers. Divya Tea Bulk Tea master cartons are packaged in food-grade lined cartons for optimal aroma retention and shelf life.',
     concern: 'Commercial Wholesale',
     pricingMode: 'wholesale',
     price: 0,
@@ -856,8 +856,21 @@ export const PRODUCTS = [
   },
 ]
 
-export const getProductBySlug = (slug) => PRODUCTS.find((p) => p.slug === slug || p.id === slug)
-export const getProductsByBrand = (brandId) => PRODUCTS.filter((p) => p.brandId === brandId)
+export const getProductBySlug = (slug) =>
+  PRODUCTS.find(
+    (p) =>
+      p.slug === slug ||
+      p.id === slug ||
+      p.slug.replace('divya-', 'cotx-') === slug ||
+      p.slug.replace('cotx-', 'divya-') === slug
+  )
+export const getProductsByBrand = (brandId) =>
+  PRODUCTS.filter(
+    (p) =>
+      p.brandId === brandId ||
+      (brandId === 'cotx-tea' && p.brandId === 'divya-tea') ||
+      (brandId === 'divya-tea' && p.brandId === 'divya-tea')
+  )
 export const getFeaturedProducts = () => PRODUCTS.filter((p) => p.featured)
 export const getBestsellerProducts = () => PRODUCTS.filter((p) => p.bestseller)
 export const getNewArrivals = () => PRODUCTS.filter((p) => p.newArrival)

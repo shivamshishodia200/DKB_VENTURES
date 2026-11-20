@@ -228,7 +228,7 @@ export default function Wholesale() {
                   >
                     <option value="All Brands">All Brands (Complete Catalogue)</option>
                     <option value="COTX Luxury Skincare">COTX Luxury Skincare (Face Care, Kits, Serums)</option>
-                    <option value="COTX Fine Tea">COTX Fine Tea (Retail Pouches & 5kg/25kg Bulk Cartons)</option>
+                    <option value="Divya Tea">Divya Tea (Retail Pouches & 5kg/25kg Bulk Cartons)</option>
                   </select>
                 </div>
               </div>

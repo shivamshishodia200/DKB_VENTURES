@@ -20,7 +20,8 @@ import {
 
 const BRAND_VISUALS = {
   'cotx-luxury-skincare': '/images/brand-cotx-luxury-skincare.webp',
-  'cotx-fine-tea': '/images/category-daily-premium-tea.webp',
+  'divya-tea': '/images/divya-tea-showcase.webp',
+  'cotx-fine-tea': '/images/divya-tea-showcase.webp',
 }
 
 const HERO_SLIDES = [
@@ -33,7 +34,7 @@ const HERO_SLIDES = [
     desc: 'Connecting premium skincare, salon facial kits, and fine estate tea with retailers, salons, beauty parlours, distributors, and individual customers from Budh Vihar, Delhi.',
     image: '/images/dkb-portfolio-hero.webp',
     chip1: 'Curated Portfolio',
-    chip1Sub: 'COTX Luxury Skincare & Fine Tea',
+    chip1Sub: 'COTX Luxury Skincare & Divya Tea',
     chip2: 'Direct Delhi Supply',
     chip2Sub: 'Budh Vihar Hub · GST Registered',
     exploreLink: '/shop',
@@ -59,21 +60,21 @@ const HERO_SLIDES = [
     b2bText: 'COTX Salon Wholesale Quote',
   },
   {
-    id: 'cotx-tea',
-    tabLabel: '☕ COTX Fine Tea',
+    id: 'divya-tea',
+    tabLabel: '☕ Divya Tea',
     badge: 'Artisanal CTC & Wholesale Bulk Supply',
-    title: 'COTX Fine Tea,',
+    title: 'Divya Tea,',
     titleAccent: 'Rich Aroma & Bold Flavor.',
     desc: 'Finest Assam CTC leaf tea, royal spiced masala chai, and commercial catering bulk cartons (5 kg & 25 kg) for daily retail enjoyment and wholesale distributors.',
-    image: '/images/category-daily-premium-tea.webp',
+    image: '/images/divya-tea-showcase.webp',
     chip1: 'Daily Kadak Chai',
     chip1Sub: 'Assam CTC & Masala Chai',
     chip2: 'Commercial Master Cartons',
     chip2Sub: '5 kg & 25 kg Wholesale Supply',
     exploreLink: '/shop?category=daily-premium-tea',
     exploreText: 'Explore Tea Blends →',
-    b2bLink: '/wholesale?brand=cotx',
-    b2bText: 'Wholesale Tea Supply Quote',
+    b2bLink: '/wholesale?brand=divya-tea',
+    b2bText: 'Divya Tea Wholesale Supply Quote',
   },
 ]
 
@@ -152,7 +153,7 @@ const TESTIMONIALS = [
 export default function Home() {
   useSEO(
     'Trusted Partner in Beauty, Personal Care & Wellness',
-    'DKB Ventures connects quality brands (COTX Luxury Skincare & COTX Fine Tea) with retailers, salons, beauty parlours, distributors, and individual customers.'
+    'DKB Ventures connects quality brands (COTX Luxury Skincare & Divya Tea) with retailers, salons, beauty parlours, distributors, and individual customers.'
   )
 
   const [activeHeroIndex, setActiveHeroIndex] = useState(0)
@@ -363,7 +364,7 @@ export default function Home() {
             <span className="perk-eyebrow">— EXPLORE BRANDS —</span>
             <div className="perk-info">
               <h4>Multi-Brand Selection</h4>
-              <p>Discover COTX Luxury Skincare and COTX Fine Tea in one trusted portfolio.</p>
+              <p>Discover COTX Luxury Skincare and Divya Tea in one trusted portfolio.</p>
             </div>
           </Link>
 
@@ -437,11 +438,11 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Right Panel: COTX Fine Tea */}
+            {/* Right Panel: Divya Tea */}
             <div className="brand-showcase-panel brand-showcase-panel-tea">
               <img
-                src="/images/cotx-fine-tea-showcase.webp"
-                alt="COTX Fine Tea"
+                src="/images/divya-tea-showcase.webp"
+                alt="Divya Tea"
                 className="brand-showcase-bg"
                 loading="lazy"
               />
@@ -451,7 +452,7 @@ export default function Home() {
               </div>
               <div className="brand-showcase-content">
                 <span className="brand-showcase-tagline">Estate Sourced Kadak & Spiced Blends</span>
-                <h3 className="brand-showcase-panel-title">COTX Fine Tea</h3>
+                <h3 className="brand-showcase-panel-title">Divya Tea</h3>
                 <p className="brand-showcase-panel-desc">
                   High-grown Assam CTC leaf tea, authentic royal masala chai, and commercial 5 kg & 25 kg wholesale master cartons.
                 </p>
@@ -460,7 +461,7 @@ export default function Home() {
                   <span className="showcase-chip">Daily Kadak Chai</span>
                   <span className="showcase-chip">5kg & 25kg Cartons</span>
                 </div>
-                <Link to="/brands/cotx-fine-tea" className="brand-showcase-btn">
+                <Link to="/brands/divya-tea" className="brand-showcase-btn">
                   <span>Explore Tea</span>
                   <span className="btn-arrow">→</span>
                 </Link>
