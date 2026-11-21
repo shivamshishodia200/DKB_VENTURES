@@ -62,13 +62,13 @@ const HERO_SLIDES = [
   {
     id: 'divya-tea',
     tabLabel: '☕ Divya Tea',
-    badge: 'Artisanal CTC & Wholesale Bulk Supply',
+    badge: 'Artisanal Tea & Wholesale Bulk Supply',
     title: 'Divya Tea,',
     titleAccent: 'Rich Aroma & Bold Flavor.',
-    desc: 'Finest Assam CTC leaf tea, royal spiced masala chai, and commercial catering bulk cartons (5 kg & 25 kg) for daily retail enjoyment and wholesale distributors.',
+    desc: 'Finest Assam leaf tea, royal spiced masala chai, and commercial catering bulk cartons (5 kg & 25 kg) for daily retail enjoyment and wholesale distributors.',
     image: '/images/divya-tea-showcase.webp',
     chip1: 'Daily Kadak Chai',
-    chip1Sub: 'Assam CTC & Masala Chai',
+    chip1Sub: 'Assam Tea & Masala Chai',
     chip2: 'Commercial Master Cartons',
     chip2Sub: '5 kg & 25 kg Wholesale Supply',
     exploreLink: '/shop?category=daily-premium-tea',
@@ -121,11 +121,11 @@ const CONCERNS_DATA = [
   },
   {
     title: 'Estate Tea & Bulk Cartons',
-    brand: 'COTX Tea',
-    brandId: 'cotx',
+    brand: 'Divya Tea',
+    brandId: 'divya-tea',
     path: '/shop?category=daily-premium-tea',
     image: '/images/category-daily-premium-tea.webp',
-    sub: 'Assam CTC, Masala & Wholesale Cartons',
+    sub: 'Assam Tea, Masala & Wholesale Cartons',
   },
 ]
 
@@ -143,7 +143,7 @@ const TESTIMONIALS = [
     stars: 5,
   },
   {
-    quote: 'The COTX Japanese Cherry Blossom face wash and Sun Block SPF 50++ are consistent bestsellers in our retail store. The Assam CTC tea and Masala Chai are also favorites.',
+    quote: 'The COTX Japanese Cherry Blossom face wash and Sun Block SPF 50++ are consistent bestsellers in our retail store. The Assam Tea and Masala Chai are also favorites.',
     author: 'Anita Verma',
     role: 'Retail Store Owner (Delhi NCR)',
     stars: 5,
@@ -247,7 +247,7 @@ export default function Home() {
               {/* Enterprise Trust Metrics Row */}
               <div className="hero-trust-metrics">
                 <div className="hero-metric-item">
-                  <div className="hero-metric-value">3</div>
+                  <div className="hero-metric-value">2</div>
                   <div className="hero-metric-label">Premier Brands</div>
                 </div>
                 <div className="hero-metric-divider" />
@@ -454,7 +454,7 @@ export default function Home() {
                 <span className="brand-showcase-tagline">Estate Sourced Kadak & Spiced Blends</span>
                 <h3 className="brand-showcase-panel-title">Divya Tea</h3>
                 <p className="brand-showcase-panel-desc">
-                  High-grown Assam CTC leaf tea, authentic royal masala chai, and commercial 5 kg & 25 kg wholesale master cartons.
+                  High-grown Assam leaf tea, authentic royal masala chai, and commercial 5 kg & 25 kg wholesale master cartons.
                 </p>
                 <div className="brand-showcase-chips">
                   <span className="showcase-chip">Garden Fresh</span>

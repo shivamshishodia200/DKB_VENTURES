@@ -12,7 +12,7 @@ DKB VENTURES के अंतर्गत कुल 3 प्रमुख ब्�
 | :---: | :--- | :--- | :--- |
 | 1 | **COTX Luxury Skincare** | `cotx` / `cotx-luxury-skincare` | प्रीमियम स्किनकेयर, फेशियल क्लेंज़र, हेयर ग्रोथ ऑइल, मेन्स ग्रूमिंग और 6-स्टेप सैलून फेशियल किट्स |
 | 2 | **Green Herbs Ayurveda** | `green-herbs` / `green-herbs-ayurveda` | 100% शुद्ध एलोवेरा जेल, उबटन, चंदन फेस पैक, भृंगराज-आंवला केश संजीवनी तेल और स्टीम-डिस्टिल्ड गुलाब जल |
-| 3 | **Divya Tea** | `divya-tea` / `divya-tea` | प्रीमियम असम व डुआर्स CTC पत्ती चाय, 7-मसाला कड़क चाय और 5kg / 25kg के कमर्शियल होलसेल बोरे |
+| 3 | **Divya Tea** | `divya-tea` / `divya-tea` | प्रीमियम असम पत्ती चाय, 7-मसाला कड़क चाय और 5kg / 25kg के कमर्शियल होलसेल कार्टन |
 
 ---
 
@@ -31,8 +31,8 @@ DKB VENTURES के अंतर्गत कुल 3 प्रमुख ब्�
 | 7 | **Herbal Skincare & Aloe** | `herbal-skincare` | Green Herbs Ayurveda | 99% शुद्ध एलोवेरा जेल और शुद्ध स्टीम-डिस्टिल्ड रोज़ वॉटर मिस्ट |
 | 8 | **Herbal Face Packs & Ubtan** | `face-packs` | Green Herbs Ayurveda | चंदन, हल्दी, बेसन और मुल्तानी मिट्टी युक्त ट्रेडिशनल उबटन (150g / 500g) |
 | 9 | **Ayurvedic Hair Oils** | `ayurvedic-hair` | Green Herbs Ayurveda | 16 जड़ी-बूटियों (भृंगराज, आंवला, ब्राह्मी) से सिद्ध केश संजीवनी तेल |
-| 10 | **Daily & Premium Tea** | `tea-retail` | Divya Tea | असम CTC चाय और इलायची-अदरक-दालचीनी युक्त रॉयल मसाला चाय |
-| 11 | **Wholesale & Bulk Tea Packs** | `tea-wholesale` | Divya Tea | होटल, कैटरर्स, चाय स्टॉल्स व रीसेलर्स के लिए 5kg व 25kg कमर्शियल बोरे |
+| 10 | **Daily & Premium Tea** | `tea-retail` | Divya Tea | असम चाय और इलायची-अदरक-दालचीनी युक्त रॉयल मसाला चाय |
+| 11 | **Wholesale & Bulk Tea Packs** | `tea-wholesale` | Divya Tea | होटल, कैटरर्स, चाय स्टॉल्स व रीसेलर्स के लिए 5kg व 25kg कमर्शियल कार्टन |
 
 ---
 
@@ -182,8 +182,8 @@ DKB VENTURES के अंतर्गत कुल 3 प्रमुख ब्�
 
 ### ☕ ब्रांड 3: Divya Tea
 
-#### 11. Divya Tea Premium CTC Leaf Blend
-- **SKU:** `DKB-DVT-CTC01`
+#### 11. Divya Tea Assam Tea
+- **SKU:** `DKB-DVT-TEA01`
 - **कैटेगरी:** Daily & Premium Tea (`tea-retail`)
 - **कंसर्न (Concern):** Fresh Daily Beverage
 - **प्राइस:** ₹180 (MRP: ₹240) — *25% छूट*
@@ -236,7 +236,7 @@ DKB VENTURES के अंतर्गत कुल 3 प्रमुख ब्�
 | 8 | Green Herbs Ubtan & Sandalwood Pack | Green Herbs | Herbal Face Packs & Ubtan | 150 g | ₹329 |
 | 9 | Green Herbs Bhringraj & Amla Hair Oil | Green Herbs | Ayurvedic Hair Oils | 200 ml | ₹399 |
 | 10 | Green Herbs Steam-Distilled Rose Water | Green Herbs | Herbal Skincare & Aloe | 200 ml | ₹199 |
-| 11 | Divya Tea Premium CTC Leaf Blend | Divya Tea | Daily & Premium Tea | 250 g | ₹180 |
+| 11 | Divya Tea Assam Tea | Divya Tea | Daily & Premium Tea | 250 g | ₹180 |
 | 12 | Divya Tea Royal Spiced Masala Chai | Divya Tea | Daily & Premium Tea | 250 g | ₹260 |
 | 13 | Divya Tea Wholesale Commercial Pack | Divya Tea | Wholesale & Bulk Tea Packs | 5kg / 25kg | कोटेशन पर |
 

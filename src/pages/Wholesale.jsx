@@ -273,7 +273,7 @@ export default function Wholesale() {
                   value={formData.productsOfInterest}
                   onChange={handleChange}
                   className="form-input"
-                  placeholder="e.g. Facial Kits 20 pcs, Aloe Gel 50 tubs, Divya CTC 100 kg"
+                  placeholder="e.g. Facial Kits 20 pcs, Vitamin C Serum 50 pcs, Divya Tea 100 kg"
                 />
               </div>
 

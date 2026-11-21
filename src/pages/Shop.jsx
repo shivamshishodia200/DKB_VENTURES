@@ -6,8 +6,8 @@ import { useSEO } from '../hooks/useSEO'
 
 export default function Shop() {
   useSEO(
-    'Catalogue & Store — Skincare, Ayurveda & Tea',
-    'Browse the full multi-brand catalogue of DKB Ventures: COTX Luxury Skincare, Green Herbs Ayurveda, and Divya Tea with wholesale & retail availability.'
+    'Catalogue & Store — Luxury Skincare & Divya Tea',
+    'Browse the full multi-brand catalogue of DKB Ventures: COTX Luxury Skincare and Divya Tea with wholesale & retail availability.'
   )
 
   const [searchParams, setSearchParams] = useSearchParams()
@@ -101,7 +101,7 @@ export default function Shop() {
         img: '/images/divya-tea-showcase.webp',
         eyebrow: '☕ Divya Tea',
         title: 'Estate Tea & Commercial Bulk Cartons',
-        desc: 'Assam high-grown CTC tea, authentic spiced royal chai, and commercial catering cartons (5 kg & 25 kg).',
+        desc: 'Assam high-grown tea, authentic spiced royal chai, and commercial catering cartons (5 kg & 25 kg).',
       }
     }
     return {

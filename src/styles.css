@@ -606,7 +606,9 @@ ol {
 .hero-status-eyebrow {
   display: inline-flex;
   align-items: center;
+  flex-wrap: wrap;
   gap: 10px;
+  max-width: 100%;
   padding: 6px 14px;
   background: rgba(199, 160, 82, 0.1);
   border: 1px solid rgba(199, 160, 82, 0.35);
@@ -1469,8 +1471,8 @@ ol {
 /* Panel */
 .brand-showcase-panel {
   position: relative;
-  min-height: 540px;
-  height: 560px;
+  min-height: 560px;
+  height: 580px;
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -1513,11 +1515,11 @@ ol {
 }
 
 .brand-showcase-panel-skincare .brand-showcase-bg {
-  object-position: center 22%;
+  object-position: center top;
 }
 
 .brand-showcase-panel-tea .brand-showcase-bg {
-  object-position: center 25%;
+  object-position: right center;
 }
 
 .brand-showcase-panel:hover .brand-showcase-bg {

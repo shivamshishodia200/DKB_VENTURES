@@ -40,11 +40,11 @@ DKB Ventures represents and distributes three distinct brand portfolios:
 - Traditional Ayurvedic hair oils (Bhringraj, Amla, Brahmi)
 - Steam-distilled pure rose water hydrosols & wellness essentials
 
-### 3. Divya Tea
+### 2. Divya Tea
 *Tea products for everyday consumption, retail sale, and commercial wholesale opportunities.*
-- Everyday CTC leaf tea blends (Assam & Dooars blend)
+- High-grown Assam Tea
 - Royal spiced masala chai with whole natural spices
-- Commercial wholesale bulk sacks (5 kg / 25 kg) for caterers, grocers, and institutions
+- Commercial wholesale bulk cartons (5 kg / 25 kg) for caterers, grocers, and institutions
 
 ---
 
@@ -117,7 +117,7 @@ DKB_VENTURES/
   - **Emerald & Gold Hero:** "Beauty. Wellness. Trusted Partnerships." टैगलाइन, ऑफिशियल लोगो शोकेस, डायरेक्ट कॉल-टू-एक्शन बटन्स।
   - **Perks Bar:** B2B & Retail Supply, Verified Portfolio, Delhi Logistics Hub, Direct Management Line.
   - **Company Intro:** दिल्ली आधारित फर्म का प्रोफाइल, हेड ऑफिस एड्रेस, फोन और GSTIN।
-  - **Explore Our Brands:** 3 मुख्य ब्रांड्स (COTX, Green Herbs, Divya Tea) के विजुअल कार्ड्स।
+  - **Explore Our Brands:** 2 मुख्य ब्रांड्स (COTX Luxury Skincare, Divya Tea) का सिनेमैटिक 2-पैनल शोकेस।
   - **Shop by Category:** 8 मुख्य कैटेगरीज में वन-क्लिक नेविगेशन।
   - **Featured Products:** एक्टिव कैटलॉग से चुनिंदा बेस्टसेलर प्रोडक्ट्स का ग्रिड।
   - **Wholesale & Trade Section:** सैलून, पार्लर और होलसेलर्स के लिए विशेष कमर्शियल एडवांटेज व डायरेक्ट WhatsApp कोट।

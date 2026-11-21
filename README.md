@@ -9,9 +9,8 @@
 ---
 
 ## 🌟 Brand Portfolio
-1. **COTX Luxury Skincare** — Everyday beauty & grooming essentials, face washes, moisturizers, hair growth oils, beard grooming, professional 6-step facial kits.
-2. **Green Herbs Ayurveda** — Pure aloe vera gels, traditional ubtan & sandalwood face packs, Bhringraj-Amla herbal hair oils, steam-distilled rose water.
-3. **Divya Tea** — Daily CTC leaf tea, royal spiced masala chai, and commercial wholesale bulk packs (5 kg / 25 kg).
+1. **COTX Luxury Skincare** — Targeted face washes, active serums, daily moisturizers, SPF 50++ sun care, body lotion, B12 hair care, and professional 6-step bridal salon facial kits (22 listings).
+2. **Divya Tea** — High-grown Assam Tea, royal spiced Masala Chai, and commercial catering bulk cartons (5 kg & 25 kg master cartons).
 
 ---
 

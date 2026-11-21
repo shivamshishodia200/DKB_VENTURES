@@ -58,7 +58,7 @@ export const COMPANY_INFO = {
       themeColor: '#4E342E',
       accentColor: '#D7CCC8',
       categories: [
-        'Assam CTC High-Grown Tea',
+        'Assam High-Grown Tea',
         'Authentic Spiced Masala Chai',
         'Commercial 5 kg Master Cartons',
         'Commercial 25 kg Wholesale Cartons',

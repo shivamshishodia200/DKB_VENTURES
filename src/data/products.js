@@ -81,7 +81,7 @@ export const CATEGORIES = [
     brandName: 'Divya Tea',
     icon: 'leaf',
     image: '/images/category-daily-premium-tea.webp',
-    subtitle: 'Garden-fresh Assam CTC tea & aromatic spiced royal chai',
+    subtitle: 'Garden-fresh Assam tea & aromatic spiced royal chai',
     badge: 'Garden Fresh',
     tag: 'Daily & Premium Tea',
   },
@@ -766,22 +766,22 @@ export const PRODUCTS = [
   // Category 7: Daily & Premium Tea (2 items)
   // ==========================================
   {
-    id: 'cotx-assam-ctc-tea',
-    slug: 'cotx-assam-ctc-tea',
+    id: 'divya-assam-tea',
+    slug: 'divya-assam-tea',
     brandId: 'divya-tea',
     brandName: 'Divya Tea',
     categoryId: 'daily-premium-tea',
     categoryName: 'Daily & Premium Tea',
-    name: 'Assam CTC Tea',
-    short: 'Garden-fresh Assam CTC black tea delivering robust liquor, rich color, and strong taste.',
+    name: 'Assam Tea',
+    short: 'Garden-fresh Assam black tea delivering robust liquor, rich color, and strong taste.',
     description:
-      'Sourced from high-grown Assam tea estates, Divya Tea Assam CTC brews an invigorating, full-bodied cup perfect for daily morning and evening chai.',
+      'Sourced from high-grown Assam tea estates, Divya Tea Assam Tea brews an invigorating, full-bodied cup perfect for daily morning and evening chai.',
     concern: 'Fresh Daily Beverage',
     pricingMode: 'enquiry',
     price: null,
     mrp: null,
     size: 'Pending',
-    image: '/products/cotx-assam-ctc-tea.webp',
+    image: '/products/divya-assam-tea.webp',
     isIllustrative: false,
     bestseller: true,
     featured: true,
@@ -793,22 +793,22 @@ export const PRODUCTS = [
     benefits: ['Strong kadak flavor profile', 'Rich amber golden liquor', 'Estate fresh packaging', 'Perfect with milk and sugar'],
   },
   {
-    id: 'cotx-masala-chai',
-    slug: 'cotx-masala-chai',
+    id: 'divya-masala-chai',
+    slug: 'divya-masala-chai',
     brandId: 'divya-tea',
     brandName: 'Divya Tea',
     categoryId: 'daily-premium-tea',
     categoryName: 'Daily & Premium Tea',
     name: 'Masala Chai',
-    short: 'Authentic spiced tea blend of premium CTC with cardamom, ginger, cloves, and cinnamon.',
+    short: 'Authentic spiced tea blend of premium black tea with cardamom, ginger, cloves, and cinnamon.',
     description:
-      'Divya Tea Masala Chai blends traditional aromatic whole spices with robust CTC tea leaves for an authentic, warming kadak chai experience.',
+      'Divya Tea Masala Chai blends traditional aromatic whole spices with robust tea leaves for an authentic, warming kadak chai experience.',
     concern: 'Fresh Daily Beverage',
     pricingMode: 'enquiry',
     price: null,
     mrp: null,
     size: 'Pending',
-    image: '/products/cotx-masala-chai.webp',
+    image: '/products/divya-masala-chai.webp',
     isIllustrative: false,
     bestseller: true,
     featured: true,
@@ -824,8 +824,8 @@ export const PRODUCTS = [
   // Category 8: Wholesale & Bulk Tea Packs (1 item)
   // ==========================================
   {
-    id: 'cotx-bulk-tea',
-    slug: 'cotx-bulk-tea',
+    id: 'divya-bulk-tea',
+    slug: 'divya-bulk-tea',
     brandId: 'divya-tea',
     brandName: 'Divya Tea',
     categoryId: 'wholesale-bulk-tea',
@@ -839,7 +839,7 @@ export const PRODUCTS = [
     price: 0,
     mrp: 0,
     size: '5 kg and 25 kg cartons',
-    image: '/products/cotx-bulk-tea-cartons.webp',
+    image: '/products/divya-bulk-tea-cartons.webp',
     isIllustrative: true,
     variants: [
       { id: '5kg-carton', size: '5 kg carton', price: 0, mrp: 0, inStock: true },
@@ -856,14 +856,26 @@ export const PRODUCTS = [
   },
 ]
 
-export const getProductBySlug = (slug) =>
-  PRODUCTS.find(
+export const getProductBySlug = (slug) => {
+  if (!slug) return null
+  const s = String(slug).toLowerCase()
+  if (s === 'cotx-assam-ctc-tea' || s === 'divya-assam-ctc-tea' || s === 'assam-ctc-tea' || s === 'assam-tea') {
+    return PRODUCTS.find((p) => p.id === 'divya-assam-tea')
+  }
+  if (s === 'cotx-masala-chai') {
+    return PRODUCTS.find((p) => p.id === 'divya-masala-chai')
+  }
+  if (s === 'cotx-bulk-tea') {
+    return PRODUCTS.find((p) => p.id === 'divya-bulk-tea')
+  }
+  return PRODUCTS.find(
     (p) =>
       p.slug === slug ||
       p.id === slug ||
       p.slug.replace('divya-', 'cotx-') === slug ||
       p.slug.replace('cotx-', 'divya-') === slug
   )
+}
 export const getProductsByBrand = (brandId) =>
   PRODUCTS.filter(
     (p) =>

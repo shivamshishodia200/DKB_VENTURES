@@ -17,7 +17,8 @@ export default function ProductArt({
       case 'cotx':
         return 'COTX'
       case 'cotx-tea':
-        return 'COTX TEA'
+      case 'divya-tea':
+        return 'DIVYA TEA'
       default:
         return 'DKB'
     }
