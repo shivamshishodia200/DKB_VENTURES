@@ -2750,13 +2750,37 @@ ol {
   line-height: 1.4;
 }
 
-/* Testimonials Grid */
-.testimonials-grid {
+/* ==========================================================================
+   CLIENT FEEDBACK & TESTIMONIALS + COTX GALLERY
+   ========================================================================== */
+
+/* Testimonials & Gallery Grid - Responsive 3 / 2 / 1 Layout */
+.testimonials-grid,
+.client-gallery-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 24px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
+@media (max-width: 1023px) and (min-width: 768px) {
+  .testimonials-grid,
+  .client-gallery-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+  }
+}
+
+@media (max-width: 767px) {
+  .testimonials-grid,
+  .client-gallery-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+}
+
+/* Fix third testimonial card visibility on desktop and prevent overflow */
 .testimonial-card {
   background: var(--dkb-white);
   border: 1px solid var(--dkb-border);
@@ -2767,6 +2791,10 @@ ol {
   flex-direction: column;
   justify-content: space-between;
   transition: all 0.3s ease;
+  min-width: 0;
+  box-sizing: border-box;
+  word-break: break-word;
+  overflow: hidden;
 }
 
 .testimonial-card:hover {
@@ -2800,6 +2828,297 @@ ol {
 .testimonial-author-role {
   font-size: 12px;
   color: var(--dkb-muted);
+}
+
+/* COTX Skin Brightening Cream Gallery Section */
+.client-gallery-block {
+  margin-top: 52px;
+  padding-top: 40px;
+  border-top: 1px solid var(--dkb-border-light);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.client-gallery-header {
+  text-align: center;
+  margin-bottom: 32px;
+  max-width: 680px;
+  margin-inline: auto;
+}
+
+.client-gallery-title {
+  font-family: var(--font-serif);
+  font-size: clamp(22px, 3vw, 28px);
+  color: var(--dkb-green-dark);
+  margin-bottom: 8px;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.client-gallery-subtitle {
+  font-size: 14px;
+  color: var(--dkb-text-secondary);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Gallery Card */
+.client-gallery-card {
+  background: var(--dkb-white);
+  border: 1px solid var(--dkb-border);
+  border-radius: var(--radius-md);
+  padding: 16px;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s ease;
+  min-width: 0;
+  box-sizing: border-box;
+  margin: 0;
+  position: relative;
+}
+
+.client-gallery-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--dkb-gold);
+}
+
+/* Trigger Button */
+.client-gallery-trigger {
+  all: unset;
+  display: block;
+  width: 100%;
+  cursor: pointer;
+  border-radius: var(--radius-sm);
+  outline-offset: 4px;
+  transition: outline 0.2s ease;
+  position: relative;
+}
+
+.client-gallery-trigger:focus-visible {
+  outline: 2px solid var(--dkb-gold);
+}
+
+/* Image Frame - Consistent 3:2 Aspect Ratio with object-fit: contain */
+.client-gallery-image-frame {
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  background: #f8f6f0;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--dkb-border-light);
+}
+
+.client-gallery-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  transition: transform 0.35s ease;
+}
+
+.client-gallery-trigger:hover .client-gallery-img {
+  transform: scale(1.02);
+}
+
+/* Hover/Touch View Badge */
+.client-gallery-zoom-badge {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(2, 36, 21, 0.85);
+  backdrop-filter: blur(4px);
+  color: #ffffff;
+  padding: 6px 12px;
+  border-radius: var(--radius-full);
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  opacity: 0.9;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  pointer-events: none;
+}
+
+.client-gallery-trigger:hover .client-gallery-zoom-badge {
+  background: var(--dkb-gold);
+  color: #ffffff;
+  opacity: 1;
+}
+
+/* Caption below the image */
+.client-gallery-caption {
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid var(--dkb-border-light);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  text-align: left;
+}
+
+.client-gallery-caption-title {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: var(--dkb-green-dark);
+  line-height: 1.45;
+  word-wrap: break-word;
+}
+
+/* Full-Size Modal Preview Overlay */
+.client-gallery-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(2, 36, 21, 0.88);
+  backdrop-filter: blur(8px);
+  z-index: 10000; /* Well above floating WhatsApp button (z-index: 150) */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  box-sizing: border-box;
+  animation: dkbFadeIn 0.25s ease;
+}
+
+@keyframes dkbFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.client-gallery-modal-dialog {
+  background: var(--dkb-white);
+  border: 1px solid var(--dkb-gold-light);
+  border-radius: var(--radius-md);
+  max-width: 1080px;
+  width: 100%;
+  max-height: 94vh;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+  box-sizing: border-box;
+  animation: dkbScaleIn 0.25s ease;
+}
+
+@keyframes dkbScaleIn {
+  from { transform: scale(0.96); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+/* Visible Close Button */
+.client-gallery-modal-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 10005;
+  background: var(--dkb-green-dark);
+  color: #ffffff;
+  border: 1px solid var(--dkb-gold);
+  border-radius: var(--radius-full);
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+}
+
+.client-gallery-modal-close:hover,
+.client-gallery-modal-close:focus-visible {
+  background: var(--dkb-gold);
+  color: #ffffff;
+  transform: rotate(90deg) scale(1.05);
+  outline: 2px solid var(--dkb-white);
+}
+
+.client-gallery-modal-body {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-y: auto;
+  box-sizing: border-box;
+}
+
+.client-gallery-modal-image-wrap {
+  width: 100%;
+  max-height: calc(80vh - 80px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f8f6f0;
+  border-radius: var(--radius-sm);
+  padding: 8px;
+  box-sizing: border-box;
+}
+
+.client-gallery-modal-img {
+  max-width: 100%;
+  max-height: calc(80vh - 100px);
+  object-fit: contain;
+  display: block;
+  border-radius: var(--radius-sm);
+}
+
+.client-gallery-modal-footer {
+  width: 100%;
+  margin-top: 16px;
+  padding-top: 14px;
+  border-top: 1px solid var(--dkb-border-light);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.client-gallery-modal-caption {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--dkb-green-dark);
+  margin: 0;
+}
+
+.client-gallery-modal-count {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--dkb-muted);
+  background: var(--dkb-cream);
+  padding: 4px 10px;
+  border-radius: var(--radius-full);
+}
+
+@media (max-width: 640px) {
+  .client-gallery-modal-overlay {
+    padding: 10px;
+  }
+  .client-gallery-modal-body {
+    padding: 16px 12px 14px;
+  }
+  .client-gallery-modal-close {
+    top: 8px;
+    right: 8px;
+    width: 38px;
+    height: 38px;
+  }
+  .client-gallery-modal-image-wrap {
+    max-height: 65vh;
+    padding: 4px;
+  }
+  .client-gallery-modal-img {
+    max-height: 62vh;
+  }
 }
 
 /* ==========================================================================
@@ -3465,10 +3784,6 @@ ol {
   }
 
   .b2b-tier-strip {
-    grid-template-columns: 1fr;
-  }
-
-  .testimonials-grid {
     grid-template-columns: 1fr;
   }
 

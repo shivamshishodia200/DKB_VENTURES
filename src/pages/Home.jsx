@@ -1,9 +1,12 @@
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import ProductCard from '../components/ProductCard'
 import { COMPANY_INFO, getWholesaleEnquiryWhatsApp, getGeneralEnquiryWhatsApp } from '../data/companyInfo'
 import { getFeaturedProducts, CATEGORIES } from '../data/products'
 import { useSEO } from '../hooks/useSEO'
+import clientFeedback1 from '../asset/client-feedback/client-1.jpeg'
+import clientFeedback2 from '../asset/client-feedback/client-2.jpeg'
+import clientFeedback3 from '../asset/client-feedback/client-3.jpeg'
 import {
   IconBox,
   IconShieldCheck,
@@ -150,6 +153,27 @@ const TESTIMONIALS = [
   },
 ]
 
+const COTX_FEEDBACK_IMAGES = [
+  {
+    id: 'cotx-feedback-1',
+    src: clientFeedback1,
+    alt: 'COTX Skin Brightening Cream before and after client feedback showing facial skin brightening results and product packaging',
+    caption: 'COTX Skin Brightening Cream — Before & After',
+  },
+  {
+    id: 'cotx-feedback-2',
+    src: clientFeedback2,
+    alt: 'COTX Skin Brightening Cream before and after client transformation photo with cream jar and retail box',
+    caption: 'COTX Skin Brightening Cream — Before & After',
+  },
+  {
+    id: 'cotx-feedback-3',
+    src: clientFeedback3,
+    alt: 'COTX Skin Brightening Cream before and after skin radiance feedback comparison with product container',
+    caption: 'COTX Skin Brightening Cream — Before & After',
+  },
+]
+
 export default function Home() {
   useSEO(
     'Trusted Partner in Beauty, Personal Care & Wellness',
@@ -160,6 +184,42 @@ export default function Home() {
   const currentSlide = HERO_SLIDES[activeHeroIndex]
 
   const [activeCategoryTab, setActiveCategoryTab] = useState('all')
+
+  const [previewImage, setPreviewImage] = useState(null)
+  const triggerRefs = useRef([])
+  const modalCloseRef = useRef(null)
+
+  useEffect(() => {
+    if (!previewImage) return
+
+    const originalOverflow = document.body.style.overflow
+    document.body.style.overflow = 'hidden'
+
+    modalCloseRef.current?.focus()
+
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape') {
+        closePreview()
+      }
+    }
+
+    window.addEventListener('keydown', handleKeyDown)
+    return () => {
+      document.body.style.overflow = originalOverflow
+      window.removeEventListener('keydown', handleKeyDown)
+    }
+  }, [previewImage])
+
+  const openPreview = (image, index) => {
+    setPreviewImage({ ...image, index })
+  }
+
+  const closePreview = () => {
+    if (previewImage !== null && triggerRefs.current[previewImage.index]) {
+      triggerRefs.current[previewImage.index]?.focus()
+    }
+    setPreviewImage(null)
+  }
 
   const featuredList = getFeaturedProducts().slice(0, 8)
   const wholesaleWhatsAppUrl = getWholesaleEnquiryWhatsApp()
@@ -763,6 +823,101 @@ export default function Home() {
             </div>
           ))}
         </div>
+
+        {/* COTX Skin Brightening Cream Before & After Image Gallery */}
+        <div className="client-gallery-block">
+          <div className="client-gallery-header">
+            <h3 className="client-gallery-title">COTX Skin Brightening Cream</h3>
+            <p className="client-gallery-subtitle">
+              Client Before &amp; After transformations and formula results
+            </p>
+          </div>
+
+          <div className="client-gallery-grid">
+            {COTX_FEEDBACK_IMAGES.map((item, index) => (
+              <figure key={item.id} className="client-gallery-card">
+                <button
+                  type="button"
+                  className="client-gallery-trigger"
+                  onClick={() => openPreview(item, index)}
+                  ref={(el) => (triggerRefs.current[index] = el)}
+                  aria-haspopup="dialog"
+                  aria-label={`Open full-size preview: ${item.caption} (Photo ${index + 1})`}
+                >
+                  <div className="client-gallery-image-frame">
+                    <img
+                      src={item.src}
+                      alt={item.alt}
+                      className="client-gallery-img"
+                      loading="lazy"
+                      width="1536"
+                      height="1024"
+                    />
+                    <span className="client-gallery-zoom-badge" aria-hidden="true">
+                      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                        <line x1="11" y1="8" x2="11" y2="14"></line>
+                        <line x1="8" y1="11" x2="14" y2="11"></line>
+                      </svg>
+                      <span>Preview</span>
+                    </span>
+                  </div>
+                </button>
+                <figcaption className="client-gallery-caption">
+                  <span className="client-gallery-caption-title">{item.caption}</span>
+                </figcaption>
+              </figure>
+            ))}
+          </div>
+        </div>
+
+        {/* Accessible Full-Size Modal Preview */}
+        {previewImage && (
+          <div
+            className="client-gallery-modal-overlay"
+            role="dialog"
+            aria-modal="true"
+            aria-label="Full-size COTX Before and After photo preview"
+            onClick={(e) => {
+              if (e.target === e.currentTarget) closePreview()
+            }}
+          >
+            <div className="client-gallery-modal-dialog">
+              <button
+                type="button"
+                className="client-gallery-modal-close"
+                onClick={closePreview}
+                ref={modalCloseRef}
+                aria-label="Close full-size preview (Escape)"
+              >
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <line x1="18" y1="6" x2="6" y2="18"></line>
+                  <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+                <span className="sr-only">Close</span>
+              </button>
+
+              <div className="client-gallery-modal-body">
+                <div className="client-gallery-modal-image-wrap">
+                  <img
+                    src={previewImage.src}
+                    alt={previewImage.alt}
+                    className="client-gallery-modal-img"
+                  />
+                </div>
+                <div className="client-gallery-modal-footer">
+                  <p className="client-gallery-modal-caption">
+                    {previewImage.caption}
+                  </p>
+                  <span className="client-gallery-modal-count">
+                    {previewImage.index + 1} of {COTX_FEEDBACK_IMAGES.length}
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
       </section>
 
       {/* 9. WHY CHOOSE DKB VENTURES */}
