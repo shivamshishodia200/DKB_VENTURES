@@ -45,6 +45,16 @@ function Header() {
     setMobileMenuOpen(false)
   }, [pathname])
 
+  // Lock body scroll and set class when mobile menu is open
+  useEffect(() => {
+    if (mobileMenuOpen) {
+      document.body.classList.add('mobile-menu-active')
+    } else {
+      document.body.classList.remove('mobile-menu-active')
+    }
+    return () => document.body.classList.remove('mobile-menu-active')
+  }, [mobileMenuOpen])
+
   // Keyboard accessibility: Close mobile menu on Escape
   useEffect(() => {
     if (!mobileMenuOpen) return
@@ -68,97 +78,123 @@ function Header() {
   const closeMenu = () => setMobileMenuOpen(false)
 
   return (
-    <header className="site-header">
+    <>
+      {/* Announcement Bar: In normal document flow on mobile so it scrolls away */}
       <AnnouncementBar />
-      <div className="container header-inner">
-        {/* Mobile menu toggle */}
-        <button
-          ref={menuBtnRef}
-          className="mobile-menu-btn"
-          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          aria-expanded={mobileMenuOpen}
-          aria-label={mobileMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
-        >
-          {mobileMenuOpen ? '✕' : '☰'}
-        </button>
 
-        {/* Brand Logo */}
-        <Link to="/" className="header-logo-wrap" aria-label="DKB VENTURES Home" onClick={closeMenu}>
-          <img
-            src={dkbLogo}
-            alt="DKB VENTURES — Beauty, Personal Care & Wellness"
-            className="header-logo-img"
-          />
-        </Link>
-
-        {/* Main Desktop & Mobile Navigation */}
-        <nav className={`main-nav ${mobileMenuOpen ? 'mobile-open' : ''}`} aria-label="Primary navigation">
-          <NavLink to="/" end className="nav-link" onClick={closeMenu}>
-            Home
-          </NavLink>
-          <NavLink to="/about" className="nav-link" onClick={closeMenu}>
-            About Us
-          </NavLink>
-          <NavLink to="/brands" className="nav-link" onClick={closeMenu}>
-            Our Brands
-          </NavLink>
-          <NavLink to="/shop" className="nav-link" onClick={closeMenu}>
-            Shop All
-          </NavLink>
-          <NavLink to="/wholesale" className="nav-link" onClick={closeMenu}>
-            Wholesale <span className="nav-badge-pill">B2B</span>
-          </NavLink>
-          <NavLink to="/distribution" className="nav-link" onClick={closeMenu}>
-            Distribution
-          </NavLink>
-          <NavLink to="/contact" className="nav-link" onClick={closeMenu}>
-            Contact
-          </NavLink>
-        </nav>
-
-        {/* Mobile Menu Backdrop Scrim */}
-        {mobileMenuOpen && (
-          <div
-            className="mobile-nav-scrim"
-            onClick={closeMenu}
-            aria-hidden="true"
-          />
-        )}
-
-        {/* Header Search */}
-        <form onSubmit={handleSearchSubmit} className="header-search" role="search">
-          <span className="header-search-icon">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-              <circle cx="11" cy="11" r="8" />
-              <line x1="21" y1="21" x2="16.65" y2="16.65" />
-            </svg>
-          </span>
-          <input
-            type="text"
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-            placeholder="Search products..."
-            aria-label="Search products"
-          />
-        </form>
-
-        {/* Header Actions (Cart) */}
-        <div className="header-actions">
+      {/* Sticky Compact Header Row */}
+      <header className="site-header">
+        <div className="container header-inner">
+          {/* Mobile menu toggle */}
           <button
-            className="header-icon-btn"
-            onClick={() => setDrawerOpen(true)}
-            aria-label={`Bag containing ${count} items`}
+            ref={menuBtnRef}
+            className="mobile-menu-btn"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            aria-expanded={mobileMenuOpen}
+            aria-label={mobileMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
           >
-            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
-              <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z" />
-              <line x1="3" y1="6" x2="21" y2="6" />
-              <path d="M16 10a4 4 0 0 1-8 0" />
-            </svg>
-            <span className="cart-badge-count">{count}</span>
+            {mobileMenuOpen ? '✕' : '☰'}
           </button>
+
+          {/* Brand Logo */}
+          <Link to="/" className="header-logo-wrap" aria-label="DKB VENTURES Home" onClick={closeMenu}>
+            <img
+              src={dkbLogo}
+              alt="DKB VENTURES — Beauty, Personal Care & Wellness"
+              className="header-logo-img"
+            />
+          </Link>
+
+          {/* Main Desktop & Mobile Navigation */}
+          <nav className={`main-nav ${mobileMenuOpen ? 'mobile-open' : ''}`} aria-label="Primary navigation">
+            <NavLink to="/" end className="nav-link" onClick={closeMenu}>
+              Home
+            </NavLink>
+            <NavLink to="/about" className="nav-link" onClick={closeMenu}>
+              About Us
+            </NavLink>
+            <NavLink to="/brands" className="nav-link" onClick={closeMenu}>
+              Our Brands
+            </NavLink>
+            <NavLink to="/shop" className="nav-link" onClick={closeMenu}>
+              Shop All
+            </NavLink>
+            <NavLink to="/wholesale" className="nav-link" onClick={closeMenu}>
+              Wholesale <span className="nav-badge-pill">B2B</span>
+            </NavLink>
+            <NavLink to="/distribution" className="nav-link" onClick={closeMenu}>
+              Distribution
+            </NavLink>
+            <NavLink to="/contact" className="nav-link" onClick={closeMenu}>
+              Contact
+            </NavLink>
+          </nav>
+
+          {/* Mobile Menu Backdrop Scrim */}
+          {mobileMenuOpen && (
+            <div
+              className="mobile-nav-scrim"
+              onClick={closeMenu}
+              aria-hidden="true"
+            />
+          )}
+
+          {/* Header Search (Desktop only in header bar; hidden on mobile <= 768px) */}
+          <form onSubmit={handleSearchSubmit} className="header-search desktop-header-search" role="search">
+            <span className="header-search-icon">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <circle cx="11" cy="11" r="8" />
+                <line x1="21" y1="21" x2="16.65" y2="16.65" />
+              </svg>
+            </span>
+            <input
+              type="text"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              placeholder="Search products..."
+              aria-label="Search products"
+            />
+          </form>
+
+          {/* Header Actions (Cart) */}
+          <div className="header-actions">
+            <button
+              className="header-icon-btn"
+              onClick={() => setDrawerOpen(true)}
+              aria-label={`Bag containing ${count} items`}
+            >
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
+                <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z" />
+                <line x1="3" y1="6" x2="21" y2="6" />
+                <path d="M16 10a4 4 0 0 1-8 0" />
+              </svg>
+              <span className="cart-badge-count">{count}</span>
+            </button>
+          </div>
+        </div>
+      </header>
+
+      {/* Full-width Mobile Search Field: In normal page flow below sticky header so it scrolls away */}
+      <div className="mobile-search-flow-wrap">
+        <div className="container">
+          <form onSubmit={handleSearchSubmit} className="header-search mobile-flow-search" role="search">
+            <span className="header-search-icon">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <circle cx="11" cy="11" r="8" />
+                <line x1="21" y1="21" x2="16.65" y2="16.65" />
+              </svg>
+            </span>
+            <input
+              type="text"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              placeholder="Search products..."
+              aria-label="Search products on mobile"
+            />
+          </form>
         </div>
       </div>
-    </header>
+    </>
   )
 }
 
