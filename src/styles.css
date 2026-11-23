@@ -1648,52 +1648,215 @@ ol {
   outline-offset: 3px;
 }
 
-/* Mobile Responsive */
-@media (max-width: 840px) {
+/* Mobile & Tablet Responsive */
+@media (max-width: 960px) {
   .brand-showcase-section {
-    padding: 56px 0;
+    padding: 60px 0;
   }
   .brand-showcase-header {
-    margin-bottom: 28px;
+    margin-bottom: 32px;
   }
   .brand-showcase-subtitle {
-    font-size: 14px;
-    padding: 0 12px;
+    font-size: 14.5px;
+    padding: 0 16px;
   }
   .brand-showcase-frame {
     grid-template-columns: 1fr;
-    border-radius: 16px;
+    gap: 24px;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    border-radius: 0;
+    overflow: visible;
   }
   .brand-showcase-panel {
-    height: 440px;
-    min-height: 440px;
-  }
-  .brand-showcase-badge {
-    top: 16px;
-    left: 16px;
+    height: auto;
+    min-height: 540px;
+    border-radius: 20px;
+    border: 1px solid rgba(199, 160, 82, 0.45);
+    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.35);
+    padding-top: 180px;
   }
   .brand-showcase-panel + .brand-showcase-panel {
     border-top: 1px solid rgba(199, 160, 82, 0.45);
   }
+  .brand-showcase-badge {
+    top: 18px;
+    left: 18px;
+    font-size: 10.5px;
+    padding: 6px 14px;
+  }
+  .brand-showcase-panel-skincare .brand-showcase-bg {
+    object-position: center 15%;
+  }
+  .brand-showcase-panel-tea .brand-showcase-bg {
+    object-position: center 20%;
+  }
+  .brand-showcase-panel-skincare .brand-showcase-overlay {
+    background: linear-gradient(
+      to top,
+      rgba(2, 28, 17, 0.98) 0%,
+      rgba(2, 28, 17, 0.90) 45%,
+      rgba(2, 28, 17, 0.40) 68%,
+      rgba(2, 28, 17, 0) 85%
+    );
+  }
+  .brand-showcase-panel-tea .brand-showcase-overlay {
+    background: linear-gradient(
+      to top,
+      rgba(26, 15, 10, 0.98) 0%,
+      rgba(26, 15, 10, 0.90) 45%,
+      rgba(26, 15, 10, 0.40) 68%,
+      rgba(26, 15, 10, 0) 85%
+    );
+  }
   .brand-showcase-content {
-    padding: 0 20px 32px;
+    padding: 0 24px 34px;
+    margin-top: auto;
   }
   .brand-showcase-panel-title {
-    font-size: 26px;
+    font-size: clamp(24px, 4vw, 30px);
+    margin-bottom: 8px;
+  }
+  .brand-showcase-panel-desc {
+    font-size: 13.5px;
+    line-height: 1.55;
+    margin-bottom: 16px;
+    max-width: 440px;
+  }
+  .brand-showcase-chips {
+    gap: 8px;
+    margin-bottom: 20px;
+  }
+  .brand-showcase-btn {
+    padding: 12px 28px;
+    font-size: 13px;
+    min-height: 46px;
+    min-width: 170px;
+  }
+}
+
+@media (max-width: 640px) {
+  .brand-showcase-section {
+    padding: 48px 0;
+  }
+  .brand-showcase-header {
+    margin-bottom: 26px;
+  }
+  .brand-showcase-eyebrow {
+    gap: 12px;
+    margin-bottom: 10px;
+  }
+  .brand-showcase-eyebrow .rule {
+    width: 32px;
+  }
+  .brand-showcase-heading {
+    font-size: clamp(26px, 7vw, 34px);
+    margin-bottom: 8px;
+  }
+  .brand-showcase-subtitle {
+    font-size: 13.5px;
+    line-height: 1.5;
+    padding: 0 8px;
+  }
+  .brand-showcase-frame {
+    gap: 18px;
+  }
+  .brand-showcase-panel {
+    min-height: 500px;
+    border-radius: 18px;
+    padding-top: 160px;
+  }
+  .brand-showcase-badge {
+    top: 14px;
+    left: 14px;
+    font-size: 10px;
+    padding: 5px 12px;
+    max-width: calc(100% - 28px);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .brand-showcase-content {
+    padding: 0 18px 28px;
+  }
+  .brand-showcase-tagline {
+    font-size: 10.5px;
+    letter-spacing: 0.12em;
+    margin-bottom: 6px;
+    line-height: 1.35;
+  }
+  .brand-showcase-panel-title {
+    font-size: 24px;
     margin-bottom: 8px;
   }
   .brand-showcase-panel-desc {
     font-size: 13px;
+    line-height: 1.5;
     margin-bottom: 14px;
+    color: #dce7e2;
   }
   .brand-showcase-chips {
+    gap: 6px;
     margin-bottom: 18px;
   }
+  .showcase-chip {
+    font-size: 10.5px;
+    padding: 4px 9px;
+  }
   .brand-showcase-btn {
-    padding: 11px 26px;
-    font-size: 12.5px;
+    width: 100%;
+    max-width: 240px;
     min-height: 44px;
-    min-width: 160px;
+    padding: 11px 22px;
+    font-size: 12.5px;
+  }
+}
+
+@media (max-width: 400px) {
+  .brand-showcase-section {
+    padding: 40px 0;
+  }
+  .brand-showcase-frame {
+    gap: 16px;
+  }
+  .brand-showcase-panel {
+    min-height: 470px;
+    border-radius: 16px;
+    padding-top: 140px;
+  }
+  .brand-showcase-badge {
+    top: 12px;
+    left: 12px;
+    font-size: 9.5px;
+    padding: 4px 10px;
+  }
+  .brand-showcase-content {
+    padding: 0 14px 24px;
+  }
+  .brand-showcase-tagline {
+    font-size: 10px;
+    letter-spacing: 0.1em;
+  }
+  .brand-showcase-panel-title {
+    font-size: 22px;
+  }
+  .brand-showcase-panel-desc {
+    font-size: 12.5px;
+    line-height: 1.45;
+  }
+  .brand-showcase-chips {
+    gap: 5px;
+    margin-bottom: 16px;
+  }
+  .showcase-chip {
+    font-size: 10px;
+    padding: 3px 8px;
+  }
+  .brand-showcase-btn {
+    max-width: 100%;
+    font-size: 12px;
+    padding: 10px 18px;
   }
 }
 
