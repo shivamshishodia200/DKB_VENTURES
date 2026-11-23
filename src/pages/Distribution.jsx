@@ -52,7 +52,7 @@ export default function Distribution() {
         </p>
       </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: '1.2fr 0.8fr', gap: '48px', alignItems: 'flex-start' }} className="distribution-layout">
+      <div className="distribution-layout">
         <div className="form-card">
           {submittedId ? (
             <div style={{ textAlign: 'center', padding: '36px 16px' }}>

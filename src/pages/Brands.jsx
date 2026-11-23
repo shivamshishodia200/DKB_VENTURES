@@ -48,6 +48,7 @@ export default function Brands() {
                   style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                 />
                 <div
+                  className="brand-card-cover-content"
                   style={{
                     position: 'absolute',
                     inset: 0,
@@ -55,7 +56,7 @@ export default function Brands() {
                     display: 'flex',
                     flexDirection: 'column',
                     justifyContent: 'flex-end',
-                    padding: '32px 40px',
+                    padding: '28px 24px',
                   }}
                 >
                   <span
@@ -71,24 +72,24 @@ export default function Brands() {
                   >
                     ✦ {brand.badge}
                   </span>
-                  <h2 style={{ fontFamily: 'var(--font-serif)', fontSize: '34px', color: '#ffffff', marginBottom: '4px' }}>
+                  <h2 style={{ fontFamily: 'var(--font-serif)', fontSize: 'clamp(26px, 4vw, 34px)', color: '#ffffff', marginBottom: '4px' }}>
                     {brand.name}
                   </h2>
-                  <p style={{ color: '#d1ded8', fontSize: '15px' }}>{brand.tagline}</p>
+                  <p style={{ color: '#d1ded8', fontSize: '14.5px' }}>{brand.tagline}</p>
                 </div>
               </div>
 
-              <div style={{ padding: '36px 40px' }}>
-                <p style={{ color: 'var(--dkb-text-secondary)', fontSize: '15.5px', lineHeight: 1.7, marginBottom: '28px' }}>
+              <div className="brand-card-body" style={{ padding: '28px 24px' }}>
+                <p style={{ color: 'var(--dkb-text-secondary)', fontSize: '15px', lineHeight: 1.65, marginBottom: '24px' }}>
                   {brand.description}
                 </p>
 
-                <div className="grid grid-2" style={{ gap: '32px', marginBottom: '28px' }}>
-                  <div style={{ background: 'var(--dkb-ivory)', padding: '24px', borderRadius: 'var(--radius-sm)', border: '1px solid var(--dkb-border-light)' }}>
-                    <h3 style={{ fontSize: '13px', letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--dkb-gold-dark)', marginBottom: '14px', fontWeight: 700 }}>
+                <div className="grid grid-2" style={{ gap: '20px', marginBottom: '24px' }}>
+                  <div style={{ background: 'var(--dkb-ivory)', padding: '20px', borderRadius: 'var(--radius-sm)', border: '1px solid var(--dkb-border-light)' }}>
+                    <h3 style={{ fontSize: '12px', letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--dkb-gold-dark)', marginBottom: '12px', fontWeight: 700 }}>
                       Portfolio Product Categories
                     </h3>
-                    <ul style={{ display: 'flex', flexDirection: 'column', gap: '10px', fontSize: '14px', color: 'var(--dkb-text)' }}>
+                    <ul style={{ display: 'flex', flexDirection: 'column', gap: '8px', fontSize: '13.5px', color: 'var(--dkb-text)' }}>
                       {brand.categories.map((c, i) => (
                         <li key={i} style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                           <span style={{ color: 'var(--dkb-gold)' }}>✦</span> {c}
@@ -97,11 +98,11 @@ export default function Brands() {
                     </ul>
                   </div>
 
-                  <div style={{ background: 'var(--dkb-ivory)', padding: '24px', borderRadius: 'var(--radius-sm)', border: '1px solid var(--dkb-border-light)' }}>
-                    <h3 style={{ fontSize: '13px', letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--dkb-gold-dark)', marginBottom: '14px', fontWeight: 700 }}>
+                  <div style={{ background: 'var(--dkb-ivory)', padding: '20px', borderRadius: 'var(--radius-sm)', border: '1px solid var(--dkb-border-light)' }}>
+                    <h3 style={{ fontSize: '12px', letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--dkb-gold-dark)', marginBottom: '12px', fontWeight: 700 }}>
                       Brand Characteristics & Formulations
                     </h3>
-                    <ul style={{ display: 'flex', flexDirection: 'column', gap: '10px', fontSize: '14px', color: 'var(--dkb-text)' }}>
+                    <ul style={{ display: 'flex', flexDirection: 'column', gap: '8px', fontSize: '13.5px', color: 'var(--dkb-text)' }}>
                       {brand.features.map((f, i) => (
                         <li key={i} style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                           <span style={{ color: 'var(--dkb-success)' }}>✓</span> {f}
@@ -112,10 +113,10 @@ export default function Brands() {
                 </div>
 
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderTop: '1px solid var(--dkb-border-light)', paddingTop: '20px', flexWrap: 'wrap', gap: '16px' }}>
-                  <span style={{ fontSize: '14px', color: 'var(--dkb-muted)' }}>
+                  <span style={{ fontSize: '13.5px', color: 'var(--dkb-muted)' }}>
                     Active formulations in catalogue: <b>{brandProducts.length} items</b>
                   </span>
-                  <div style={{ display: 'flex', gap: '12px' }}>
+                  <div className="brand-card-actions" style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
                     <Link to={`/brands/${brand.id}`} className="btn btn-outline btn-sm">
                       Brand Story & Details →
                     </Link>

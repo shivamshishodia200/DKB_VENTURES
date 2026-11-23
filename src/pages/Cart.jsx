@@ -71,20 +71,13 @@ export default function Cart() {
         </span>
       </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: '1.4fr 0.8fr', gap: '40px', alignItems: 'flex-start' }} className="cart-grid-layout">
+      <div className="cart-grid-layout">
         {/* Cart Items List */}
-        <div style={{ background: 'var(--dkb-white)', border: '1px solid var(--dkb-border)', borderRadius: 'var(--radius-md)', padding: '24px' }}>
+        <div className="cart-items-box" style={{ background: 'var(--dkb-white)', border: '1px solid var(--dkb-border)', borderRadius: 'var(--radius-md)', padding: '24px' }}>
           {lines.map((line) => (
             <div
               key={`${line.id}-${line.variantId}`}
-              style={{
-                display: 'grid',
-                gridTemplateColumns: '80px 1fr auto',
-                gap: '20px',
-                padding: '20px 0',
-                borderBottom: '1px solid var(--dkb-border-light)',
-                alignItems: 'center',
-              }}
+              className="cart-line-item"
             >
               <div
                 style={{

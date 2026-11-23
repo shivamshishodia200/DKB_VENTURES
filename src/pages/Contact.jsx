@@ -34,7 +34,7 @@ export default function Contact() {
         </p>
       </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1.2fr', gap: '48px', alignItems: 'flex-start' }} className="contact-grid-layout">
+      <div className="contact-grid-layout">
         {/* Left: Official Contact Card */}
         <div>
           <div

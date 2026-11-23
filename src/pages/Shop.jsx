@@ -1,8 +1,107 @@
-import { useMemo } from 'react'
+import { useMemo, useState, useEffect } from 'react'
 import { useSearchParams } from 'react-router-dom'
 import ProductCard from '../components/ProductCard'
 import { BRANDS, CATEGORIES, CONCERNS, PRODUCTS } from '../data/products'
 import { useSEO } from '../hooks/useSEO'
+
+function FilterSections({ currentBrand, currentCategory, currentConcern, searchQuery, updateParam, clearAllFilters, onSelect }) {
+  const handleBrandClick = (id) => {
+    updateParam('brand', id)
+    onSelect?.()
+  }
+
+  const handleCategoryClick = (id) => {
+    updateParam('category', id)
+    onSelect?.()
+  }
+
+  const handleConcernClick = (c) => {
+    updateParam('concern', c)
+    onSelect?.()
+  }
+
+  return (
+    <>
+      <div className="shop-filter-header-row">
+        <h3 className="shop-filter-heading">Filters</h3>
+        {(currentBrand || currentCategory || currentConcern || searchQuery) && (
+          <button
+            onClick={clearAllFilters}
+            className="shop-filter-reset-btn"
+          >
+            Reset All
+          </button>
+        )}
+      </div>
+
+      {/* 1. Brand Filter */}
+      <div className="shop-filter-group">
+        <h4 className="shop-filter-subheading">Portfolio Brand</h4>
+        <div className="shop-filter-options">
+          <button
+            onClick={() => handleBrandClick('')}
+            className={`shop-filter-option ${!currentBrand ? 'active' : ''}`}
+          >
+            All Brands
+          </button>
+          {BRANDS.map((b) => (
+            <button
+              key={b.id}
+              onClick={() => handleBrandClick(b.id)}
+              className={`shop-filter-option ${currentBrand === b.id ? 'active' : ''}`}
+            >
+              {b.name}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      {/* 2. Category Filter */}
+      <div className="shop-filter-group">
+        <h4 className="shop-filter-subheading">Category</h4>
+        <div className="shop-filter-options shop-filter-options-scroll">
+          <button
+            onClick={() => handleCategoryClick('')}
+            className={`shop-filter-option ${!currentCategory ? 'active' : ''}`}
+          >
+            All Categories
+          </button>
+          {CATEGORIES.filter((c) => c.id !== 'all').map((c) => (
+            <button
+              key={c.id}
+              onClick={() => handleCategoryClick(c.id)}
+              className={`shop-filter-option ${currentCategory === c.id ? 'active' : ''}`}
+            >
+              {c.name}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      {/* 3. Concern Filter */}
+      <div className="shop-filter-group">
+        <h4 className="shop-filter-subheading">Benefit / Concern</h4>
+        <div className="shop-filter-options">
+          <button
+            onClick={() => handleConcernClick('')}
+            className={`shop-filter-option ${!currentConcern ? 'active' : ''}`}
+          >
+            All Concerns
+          </button>
+          {CONCERNS.map((con) => (
+            <button
+              key={con}
+              onClick={() => handleConcernClick(con)}
+              className={`shop-filter-option ${currentConcern === con ? 'active' : ''}`}
+            >
+              {con}
+            </button>
+          ))}
+        </div>
+      </div>
+    </>
+  )
+}
 
 export default function Shop() {
   useSEO(
@@ -11,12 +110,31 @@ export default function Shop() {
   )
 
   const [searchParams, setSearchParams] = useSearchParams()
+  const [filterDrawerOpen, setFilterDrawerOpen] = useState(false)
 
   const currentBrand = searchParams.get('brand') || ''
   const currentCategory = searchParams.get('category') || ''
   const currentConcern = searchParams.get('concern') || ''
   const searchQuery = (searchParams.get('q') || '').toLowerCase().trim()
   const currentSort = searchParams.get('sort') || 'featured'
+
+  const activeFilterCount = (currentBrand ? 1 : 0) + (currentCategory ? 1 : 0) + (currentConcern ? 1 : 0) + (searchQuery ? 1 : 0)
+
+  // Lock body scroll and handle Escape key for filter drawer
+  useEffect(() => {
+    if (!filterDrawerOpen) return
+    document.body.classList.add('modal-open')
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape') {
+        setFilterDrawerOpen(false)
+      }
+    }
+    window.addEventListener('keydown', handleKeyDown)
+    return () => {
+      document.body.classList.remove('modal-open')
+      window.removeEventListener('keydown', handleKeyDown)
+    }
+  }, [filterDrawerOpen])
 
   const updateParam = (key, value) => {
     const nextParams = new URLSearchParams(searchParams)
@@ -115,11 +233,11 @@ export default function Shop() {
   const banner = getBannerData()
 
   return (
-    <div className="container section">
+    <div className="container section shop-page-container">
       {/* Page Title & Breadcrumb */}
-      <div className="section-title-wrap" style={{ textAlign: 'left', marginBottom: '32px' }}>
+      <div className="section-title-wrap shop-page-title-wrap">
         <span className="eyebrow">DKB Ventures Portfolio</span>
-        <h1 className="section-title" style={{ fontSize: '36px', marginBottom: '8px' }}>
+        <h1 className="section-title shop-page-heading">
           {getPageTitle()}
         </h1>
         <p className="section-subtitle">
@@ -127,155 +245,62 @@ export default function Shop() {
         </p>
       </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: '260px 1fr', gap: '36px', alignItems: 'flex-start' }} className="shop-layout-grid">
-        {/* Filters Sidebar */}
+      <div className="shop-layout-grid">
+        {/* Desktop Filters Sidebar */}
+        <aside className="shop-filters-sidebar">
+          <FilterSections
+            currentBrand={currentBrand}
+            currentCategory={currentCategory}
+            currentConcern={currentConcern}
+            searchQuery={searchQuery}
+            updateParam={updateParam}
+            clearAllFilters={clearAllFilters}
+          />
+        </aside>
+
+        {/* Mobile Filters Drawer & Scrim */}
+        <div
+          className={`shop-filter-scrim ${filterDrawerOpen ? 'open' : ''}`}
+          onClick={() => setFilterDrawerOpen(false)}
+          aria-hidden="true"
+        />
         <aside
-          style={{
-            background: 'var(--dkb-white)',
-            border: '1px solid var(--dkb-border)',
-            borderRadius: 'var(--radius-md)',
-            padding: '24px',
-            position: 'sticky',
-            top: '90px',
-          }}
+          className={`shop-filter-drawer ${filterDrawerOpen ? 'open' : ''}`}
+          aria-label="Filter products drawer"
+          aria-hidden={!filterDrawerOpen}
         >
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
-            <h3 style={{ fontSize: '13px', textTransform: 'uppercase', letterSpacing: '0.12em', color: 'var(--dkb-green-dark)', fontWeight: 700 }}>
-              Filters
-            </h3>
-            {(currentBrand || currentCategory || currentConcern || searchQuery) && (
-              <button
-                onClick={clearAllFilters}
-                style={{ fontSize: '11px', color: 'var(--dkb-error)', textDecoration: 'underline' }}
-              >
-                Reset All
-              </button>
-            )}
+          <div className="shop-drawer-header">
+            <h3>Filters ({filteredProducts.length})</h3>
+            <button
+              className="shop-drawer-close-btn"
+              onClick={() => setFilterDrawerOpen(false)}
+              aria-label="Close filter drawer"
+            >
+              ✕
+            </button>
           </div>
-
-          {/* 1. Brand Filter */}
-          <div style={{ marginBottom: '24px' }}>
-            <h4 style={{ fontSize: '12px', textTransform: 'uppercase', letterSpacing: '0.1em', color: 'var(--dkb-muted)', marginBottom: '10px', fontWeight: 600 }}>
-              Portfolio Brand
-            </h4>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
-              <button
-                onClick={() => updateParam('brand', '')}
-                style={{
-                  textAlign: 'left',
-                  padding: '6px 10px',
-                  borderRadius: 'var(--radius-sm)',
-                  fontSize: '13px',
-                  background: !currentBrand ? 'var(--dkb-green-subtle)' : 'transparent',
-                  color: !currentBrand ? 'var(--dkb-green-dark)' : 'var(--dkb-text)',
-                  fontWeight: !currentBrand ? 700 : 500,
-                }}
-              >
-                All Brands
-              </button>
-              {BRANDS.map((b) => (
-                <button
-                  key={b.id}
-                  onClick={() => updateParam('brand', b.id)}
-                  style={{
-                    textAlign: 'left',
-                    padding: '6px 10px',
-                    borderRadius: 'var(--radius-sm)',
-                    fontSize: '13px',
-                    background: currentBrand === b.id ? 'var(--dkb-green-subtle)' : 'transparent',
-                    color: currentBrand === b.id ? 'var(--dkb-green-dark)' : 'var(--dkb-text)',
-                    fontWeight: currentBrand === b.id ? 700 : 500,
-                  }}
-                >
-                  {b.name}
-                </button>
-              ))}
-            </div>
+          <div className="shop-drawer-body">
+            <FilterSections
+              currentBrand={currentBrand}
+              currentCategory={currentCategory}
+              currentConcern={currentConcern}
+              searchQuery={searchQuery}
+              updateParam={updateParam}
+              clearAllFilters={clearAllFilters}
+            />
           </div>
-
-          {/* 2. Category Filter */}
-          <div style={{ marginBottom: '24px' }}>
-            <h4 style={{ fontSize: '12px', textTransform: 'uppercase', letterSpacing: '0.1em', color: 'var(--dkb-muted)', marginBottom: '10px', fontWeight: 600 }}>
-              Category
-            </h4>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', maxHeight: '260px', overflowY: 'auto' }}>
-              <button
-                onClick={() => updateParam('category', '')}
-                style={{
-                  textAlign: 'left',
-                  padding: '6px 10px',
-                  borderRadius: 'var(--radius-sm)',
-                  fontSize: '13px',
-                  background: !currentCategory ? 'var(--dkb-green-subtle)' : 'transparent',
-                  color: !currentCategory ? 'var(--dkb-green-dark)' : 'var(--dkb-text)',
-                  fontWeight: !currentCategory ? 700 : 500,
-                }}
-              >
-                All Categories
-              </button>
-              {CATEGORIES.filter((c) => c.id !== 'all').map((c) => (
-                <button
-                  key={c.id}
-                  onClick={() => updateParam('category', c.id)}
-                  style={{
-                    textAlign: 'left',
-                    padding: '6px 10px',
-                    borderRadius: 'var(--radius-sm)',
-                    fontSize: '13px',
-                    background: currentCategory === c.id ? 'var(--dkb-green-subtle)' : 'transparent',
-                    color: currentCategory === c.id ? 'var(--dkb-green-dark)' : 'var(--dkb-text)',
-                    fontWeight: currentCategory === c.id ? 700 : 500,
-                  }}
-                >
-                  {c.name}
-                </button>
-              ))}
-            </div>
-          </div>
-
-          {/* 3. Concern Filter */}
-          <div>
-            <h4 style={{ fontSize: '12px', textTransform: 'uppercase', letterSpacing: '0.1em', color: 'var(--dkb-muted)', marginBottom: '10px', fontWeight: 600 }}>
-              Benefit / Concern
-            </h4>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
-              <button
-                onClick={() => updateParam('concern', '')}
-                style={{
-                  textAlign: 'left',
-                  padding: '6px 10px',
-                  borderRadius: 'var(--radius-sm)',
-                  fontSize: '13px',
-                  background: !currentConcern ? 'var(--dkb-green-subtle)' : 'transparent',
-                  color: !currentConcern ? 'var(--dkb-green-dark)' : 'var(--dkb-text)',
-                  fontWeight: !currentConcern ? 700 : 500,
-                }}
-              >
-                All Concerns
-              </button>
-              {CONCERNS.map((con) => (
-                <button
-                  key={con}
-                  onClick={() => updateParam('concern', con)}
-                  style={{
-                    textAlign: 'left',
-                    padding: '6px 10px',
-                    borderRadius: 'var(--radius-sm)',
-                    fontSize: '13px',
-                    background: currentConcern === con ? 'var(--dkb-green-subtle)' : 'transparent',
-                    color: currentConcern === con ? 'var(--dkb-green-dark)' : 'var(--dkb-text)',
-                    fontWeight: currentConcern === con ? 700 : 500,
-                  }}
-                >
-                  {con}
-                </button>
-              ))}
-            </div>
+          <div className="shop-drawer-footer">
+            <button
+              className="btn btn-primary btn-full"
+              onClick={() => setFilterDrawerOpen(false)}
+            >
+              View {filteredProducts.length} Results
+            </button>
           </div>
         </aside>
 
         {/* Product Grid & Top Sort Bar */}
-        <div>
+        <div className="shop-main-content">
           {/* Dynamic Luxury Brand Banner */}
           <div className="shop-brand-banner">
             <img
@@ -290,40 +315,46 @@ export default function Shop() {
             </div>
           </div>
 
-          <div
-            style={{
-              background: 'var(--dkb-white)',
-              border: '1px solid var(--dkb-border)',
-              borderRadius: 'var(--radius-sm)',
-              padding: '14px 20px',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'space-between',
-              marginBottom: '24px',
-              flexWrap: 'wrap',
-              gap: '12px',
-            }}
-          >
-            <span style={{ fontSize: '13px', color: 'var(--dkb-muted)' }}>
-              Showing <b>{filteredProducts.length}</b> items
-            </span>
+          {/* Results Toolbar */}
+          <div className="shop-toolbar">
+            <div className="shop-toolbar-left">
+              {/* Mobile Filter Toggle Button */}
+              <button
+                className="shop-mobile-filter-trigger"
+                onClick={() => setFilterDrawerOpen(true)}
+                aria-label="Open product filters"
+              >
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <line x1="4" y1="21" x2="4" y2="14" />
+                  <line x1="4" y1="10" x2="4" y2="3" />
+                  <line x1="12" y1="21" x2="12" y2="12" />
+                  <line x1="12" y1="8" x2="12" y2="3" />
+                  <line x1="20" y1="21" x2="20" y2="16" />
+                  <line x1="20" y1="12" x2="20" y2="3" />
+                  <line x1="1" y1="14" x2="7" y2="14" />
+                  <line x1="9" y1="8" x2="15" y2="8" />
+                  <line x1="17" y1="16" x2="23" y2="16" />
+                </svg>
+                <span>Filters</span>
+                {activeFilterCount > 0 && (
+                  <span className="shop-filter-badge">{activeFilterCount}</span>
+                )}
+              </button>
 
-            <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-              <label htmlFor="sort-select" style={{ fontSize: '12px', textTransform: 'uppercase', letterSpacing: '0.08em', color: 'var(--dkb-green-dark)', fontWeight: 600 }}>
+              <span className="shop-results-count">
+                Showing <b>{filteredProducts.length}</b> items
+              </span>
+            </div>
+
+            <div className="shop-toolbar-right">
+              <label htmlFor="sort-select" className="shop-sort-label">
                 Sort By:
               </label>
               <select
                 id="sort-select"
                 value={currentSort}
                 onChange={(e) => updateParam('sort', e.target.value)}
-                style={{
-                  padding: '6px 12px',
-                  borderRadius: 'var(--radius-sm)',
-                  border: '1px solid var(--dkb-border)',
-                  background: 'var(--dkb-ivory)',
-                  fontSize: '13px',
-                  color: 'var(--dkb-text)',
-                }}
+                className="shop-sort-select"
               >
                 <option value="featured">Featured Items</option>
                 <option value="latest">New Arrivals First</option>
@@ -334,12 +365,60 @@ export default function Shop() {
             </div>
           </div>
 
+          {/* Active Filter Chips */}
+          {activeFilterCount > 0 && (
+            <div className="shop-active-chips-bar">
+              {currentBrand && (
+                <button
+                  className="shop-active-chip"
+                  onClick={() => updateParam('brand', '')}
+                  title="Remove brand filter"
+                >
+                  Brand: {BRANDS.find((b) => b.id === currentBrand)?.name || currentBrand} ✕
+                </button>
+              )}
+              {currentCategory && (
+                <button
+                  className="shop-active-chip"
+                  onClick={() => updateParam('category', '')}
+                  title="Remove category filter"
+                >
+                  Category: {CATEGORIES.find((c) => c.id === currentCategory)?.name || currentCategory} ✕
+                </button>
+              )}
+              {currentConcern && (
+                <button
+                  className="shop-active-chip"
+                  onClick={() => updateParam('concern', '')}
+                  title="Remove concern filter"
+                >
+                  Concern: {currentConcern} ✕
+                </button>
+              )}
+              {searchQuery && (
+                <button
+                  className="shop-active-chip"
+                  onClick={() => updateParam('q', '')}
+                  title="Remove search filter"
+                >
+                  Search: "{searchQuery}" ✕
+                </button>
+              )}
+              <button
+                className="shop-clear-all-link"
+                onClick={clearAllFilters}
+              >
+                Clear All
+              </button>
+            </div>
+          )}
+
           {filteredProducts.length === 0 ? (
-            <div style={{ textAlign: 'center', padding: '60px 20px', background: 'var(--dkb-white)', borderRadius: 'var(--radius-md)', border: '1px solid var(--dkb-border)' }}>
-              <h3 style={{ fontFamily: 'var(--font-serif)', fontSize: '24px', color: 'var(--dkb-green-dark)', marginBottom: '8px' }}>
+            <div className="shop-empty-state">
+              <h3 className="shop-empty-heading">
                 No Products Match Your Criteria
               </h3>
-              <p style={{ color: 'var(--dkb-muted)', marginBottom: '20px', fontSize: '14px' }}>
+              <p className="shop-empty-desc">
                 Try resetting your filters or search keywords.
               </p>
               <button className="btn btn-outline btn-sm" onClick={clearAllFilters}>
@@ -347,7 +426,7 @@ export default function Shop() {
               </button>
             </div>
           ) : (
-            <div className="grid grid-3">
+            <div className="shop-products-grid">
               {filteredProducts.map((p) => (
                 <ProductCard key={p.id} product={p} />
               ))}

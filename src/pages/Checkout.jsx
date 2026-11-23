@@ -111,7 +111,7 @@ export default function Checkout() {
         </h1>
       </div>
 
-      <form onSubmit={handleSubmit} style={{ display: 'grid', gridTemplateColumns: '1.3fr 0.8fr', gap: '48px', alignItems: 'flex-start' }} className="checkout-grid-layout">
+      <form onSubmit={handleSubmit} className="checkout-grid-layout">
         {/* Left: Customer Info Form */}
         <div className="form-card">
           {errorMsg && (

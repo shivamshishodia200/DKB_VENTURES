@@ -84,7 +84,7 @@ export default function TrackOrder() {
               </div>
 
               {/* Progress Timeline */}
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '10px', margin: '28px 0', textAlign: 'center' }}>
+              <div className="track-order-steps">
                 <div style={{ borderTop: '3px solid var(--dkb-success)', paddingTop: '10px' }}>
                   <b style={{ fontSize: '12px', color: 'var(--dkb-green-dark)', display: 'block' }}>1. Confirmed</b>
                   <span style={{ fontSize: '10.5px', color: 'var(--dkb-muted)' }}>Received</span>

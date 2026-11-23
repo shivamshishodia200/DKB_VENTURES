@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
 import { Link, NavLink, Outlet, useLocation, useNavigate } from 'react-router-dom'
 import { useCart, FREE_SHIPPING_THRESHOLD } from '../context/CartContext'
 import { COMPANY_INFO, getGeneralEnquiryWhatsApp } from '../data/companyInfo'
@@ -27,7 +27,7 @@ function AnnouncementBar() {
   return (
     <div className="top-announcement" aria-live="polite">
       <span className="sparkle">✦</span>
-      <span>{ANNOUNCEMENTS[index]}</span>
+      <span className="announcement-text">{ANNOUNCEMENTS[index]}</span>
       <span className="sparkle">✦</span>
     </div>
   )
@@ -37,12 +37,26 @@ function Header() {
   const { count, setDrawerOpen } = useCart()
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [searchQuery, setSearchQuery] = useState('')
+  const menuBtnRef = useRef(null)
   const navigate = useNavigate()
   const { pathname } = useLocation()
 
   useEffect(() => {
     setMobileMenuOpen(false)
   }, [pathname])
+
+  // Keyboard accessibility: Close mobile menu on Escape
+  useEffect(() => {
+    if (!mobileMenuOpen) return
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape') {
+        setMobileMenuOpen(false)
+        menuBtnRef.current?.focus()
+      }
+    }
+    window.addEventListener('keydown', handleKeyDown)
+    return () => window.removeEventListener('keydown', handleKeyDown)
+  }, [mobileMenuOpen])
 
   const handleSearchSubmit = (e) => {
     e.preventDefault()
@@ -51,21 +65,25 @@ function Header() {
     }
   }
 
+  const closeMenu = () => setMobileMenuOpen(false)
+
   return (
     <header className="site-header">
       <AnnouncementBar />
       <div className="container header-inner">
         {/* Mobile menu toggle */}
         <button
+          ref={menuBtnRef}
           className="mobile-menu-btn"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          aria-label="Toggle navigation menu"
+          aria-expanded={mobileMenuOpen}
+          aria-label={mobileMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
         >
           {mobileMenuOpen ? '✕' : '☰'}
         </button>
 
         {/* Brand Logo */}
-        <Link to="/" className="header-logo-wrap" aria-label="DKB VENTURES Home">
+        <Link to="/" className="header-logo-wrap" aria-label="DKB VENTURES Home" onClick={closeMenu}>
           <img
             src={dkbLogo}
             alt="DKB VENTURES — Beauty, Personal Care & Wellness"
@@ -74,48 +92,58 @@ function Header() {
         </Link>
 
         {/* Main Desktop & Mobile Navigation */}
-        <nav className={`main-nav ${mobileMenuOpen ? 'mobile-open' : ''}`}>
-          <NavLink to="/" end className="nav-link">
+        <nav className={`main-nav ${mobileMenuOpen ? 'mobile-open' : ''}`} aria-label="Primary navigation">
+          <NavLink to="/" end className="nav-link" onClick={closeMenu}>
             Home
           </NavLink>
-          <NavLink to="/about" className="nav-link">
+          <NavLink to="/about" className="nav-link" onClick={closeMenu}>
             About Us
           </NavLink>
-          <NavLink to="/brands" className="nav-link">
+          <NavLink to="/brands" className="nav-link" onClick={closeMenu}>
             Our Brands
           </NavLink>
-          <NavLink to="/shop" className="nav-link">
+          <NavLink to="/shop" className="nav-link" onClick={closeMenu}>
             Shop All
           </NavLink>
-          <NavLink to="/wholesale" className="nav-link">
+          <NavLink to="/wholesale" className="nav-link" onClick={closeMenu}>
             Wholesale <span className="nav-badge-pill">B2B</span>
           </NavLink>
-          <NavLink to="/distribution" className="nav-link">
+          <NavLink to="/distribution" className="nav-link" onClick={closeMenu}>
             Distribution
           </NavLink>
-          <NavLink to="/contact" className="nav-link">
+          <NavLink to="/contact" className="nav-link" onClick={closeMenu}>
             Contact
           </NavLink>
         </nav>
 
-        {/* Header Actions */}
-        <div className="header-actions">
-          <form onSubmit={handleSearchSubmit} className="header-search" role="search">
-            <span className="header-search-icon">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <circle cx="11" cy="11" r="8" />
-                <line x1="21" y1="21" x2="16.65" y2="16.65" />
-              </svg>
-            </span>
-            <input
-              type="text"
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder="Search products..."
-              aria-label="Search products"
-            />
-          </form>
+        {/* Mobile Menu Backdrop Scrim */}
+        {mobileMenuOpen && (
+          <div
+            className="mobile-nav-scrim"
+            onClick={closeMenu}
+            aria-hidden="true"
+          />
+        )}
 
+        {/* Header Search */}
+        <form onSubmit={handleSearchSubmit} className="header-search" role="search">
+          <span className="header-search-icon">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <circle cx="11" cy="11" r="8" />
+              <line x1="21" y1="21" x2="16.65" y2="16.65" />
+            </svg>
+          </span>
+          <input
+            type="text"
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            placeholder="Search products..."
+            aria-label="Search products"
+          />
+        </form>
+
+        {/* Header Actions (Cart) */}
+        <div className="header-actions">
           <button
             className="header-icon-btn"
             onClick={() => setDrawerOpen(true)}
@@ -138,6 +166,21 @@ function CartDrawer() {
   const { drawerOpen, setDrawerOpen, lines, subtotal, setQty, remove, isFreeShipping, amountNeededForFreeShipping } =
     useCart()
   const navigate = useNavigate()
+
+  useEffect(() => {
+    if (!drawerOpen) return
+    document.body.classList.add('cart-drawer-open')
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape') {
+        setDrawerOpen(false)
+      }
+    }
+    window.addEventListener('keydown', handleKeyDown)
+    return () => {
+      document.body.classList.remove('cart-drawer-open')
+      window.removeEventListener('keydown', handleKeyDown)
+    }
+  }, [drawerOpen, setDrawerOpen])
 
   const navigateTo = (path) => {
     setDrawerOpen(false)

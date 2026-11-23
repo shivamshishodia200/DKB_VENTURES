@@ -84,7 +84,7 @@ export default function Wholesale() {
         </p>
       </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: '1.2fr 0.8fr', gap: '48px', alignItems: 'flex-start' }} className="wholesale-grid-layout">
+      <div className="wholesale-grid-layout">
         {/* Left: Wholesale Form */}
         <div className="form-card">
           {submittedRef ? (
